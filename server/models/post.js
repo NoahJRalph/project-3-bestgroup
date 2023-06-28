@@ -1,5 +1,6 @@
 
 const { Schema, model } = require('mongoose')
+const CommentSchema = require('./comment')
 
 const moment = require('moment')
 
@@ -20,6 +21,7 @@ const PostSchema = new Schema(
 			type: String,
 			require: true
 		},
+		comments: [CommentSchema]
 	},
 	{
 		toJSON: {

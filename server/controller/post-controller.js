@@ -1,11 +1,10 @@
-const { post } = require('../model/comments')
-const { Post, User } = require('../models/')
+const { Post } = require('../models')
 
 module.exports = {
 	// get all Posts
 	async getAllPosts(req, res) {
 		try {
-			const Post = await Post.find()
+			const post = await Post.find()
 			res.status(200).json(post)
 		} catch (error) {
 			res.status(500).json(error)
@@ -56,7 +55,7 @@ module.exports = {
 					new: true
 				}
 			)
-			if (!uo) {
+			if (!updatedPost) {
 				throw Error;
 			} else {
 				res.status(201).json(updatedPost);
@@ -67,7 +66,7 @@ module.exports = {
 	},
 
 	//delete post by id
-	async deleteComment(req, res) {
+	async deletePost(req, res) {
 		try {
 			await Post.findOneAndDelete({ _id: req.params.postId })
 			res.status(200).json('The post has been deleted')
