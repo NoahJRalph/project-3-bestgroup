@@ -1,112 +1,113 @@
-const { Thought, Reaction, User } = require('../models/')
+const { post } = require('../model/comments')
+const { Post, User } = require('../models/')
 
 module.exports = {
-	// get all thoughts
-	async getAllThoughts(req, res) {
+	// get all Posts
+	async getAllPosts(req, res) {
 		try {
-			const thoughts = await Thought.find()
-			res.status(200).json(thoughts)
+			const Post = await Post.find()
+			res.status(200).json(post)
 		} catch (error) {
 			res.status(500).json(error)
 		}
 	},
 
-	//get thought by id
-	async getThoughtById(req, res) {
+	//get post by id
+	async getPostById(req, res) {
 		try {
-			const thought = await Thought.findById(req.params.thoughtId)
-			if (!thought) {
-				return res.status(404).json({ message: 'That thought was not found' })
+			const post = await Post.findById(req.params.postId)
+			if (!post) {
+				return res.status(404).json({ message: 'That post was not found' })
 			}
-			res.status(200).json(thought);
+			res.status(200).json(post);
 		} catch (error) {
 			res.status(500).json(error)
 		}
 	},
 
-	//create a new thought
-	async createThought(req, res) {
+	//create a new post
+	async createPost(req, res) {
 		try {
-			const newThought = await Thought.create(req.body)
+			const newPost = await Post.create(req.body)
 
 			const user = await User.findOneAndUpdate(
 				{ _id: req.body.userId },
-				{ $push: { thought: newThought._id } },
+				{ $push: { post: newPost._id } },
 				{ runValidators: true, new: true }
 			)
 			if (!user) {
 				res.status(404).json({ message: 'No user found with this id!' });
 				return;
 			}
-			res.status(200).json(newThought)
+			res.status(200).json(newPost)
 		} catch (error) {
 			res.status(500).json(error)
 		}
 	},
 
-	//update thought by id
-	async updateThought(req, res) {
+	//update Post by id
+	async updatePost(req, res) {
 		try {
-			const updatedThought = await Thought.findByIdAndUpdate(
-				req.params.thoughtId,
+			const updatedPost = await Post.findByIdAndUpdate(
+				req.params.postId,
 				req.body,
 				{
 					runValidators: true,
 					new: true
 				}
 			)
-			if (!updatedThought) {
+			if (!uo) {
 				throw Error;
 			} else {
-				res.status(201).json(updatedThought);
+				res.status(201).json(updatedPost);
 			}
 		} catch (error) {
 			res.status(403).json(error)
 		}
 	},
 
-	//delete thought by id
-	async deleteThought(req, res) {
+	//delete post by id
+	async deleteComment(req, res) {
 		try {
-			await Thought.findOneAndDelete({ _id: req.params.thoughtId })
-			res.status(200).json('The thought has been deleted')
+			await Post.findOneAndDelete({ _id: req.params.postId })
+			res.status(200).json('The post has been deleted')
 		} catch (error) {
 			res.status(500).json(error)
 		}
 	},
 
-	//add reaction to thought by id
-	async addReaction(req, res) {
-		console.log('Reacting to a thought')
+	//add comment to Post by id
+	async addComment(req, res) {
+		console.log('Comment to a post')
 		try {
-			const thought = await Thought.findOneAndUpdate(
-				{ _id: req.params.thoughtId },
+			const post = await Post.findOneAndUpdate(
+				{ _id: req.params.postId },
 				{ $push: { reactions: [req.body] } },
 				{ runValidators: true, new: true }
 			)
-			if (!thought) {
-				return res.status(404).json({ message: 'No thought was found' })
+			if (!post) {
+				return res.status(404).json({ message: 'No post was found' })
 			}
-			res.status(200).json(thought)
+			res.status(200).json(post)
 		} catch (error) {
 			res.status(500).json(error)
 		}
 	},
 
 	//delete reaction 
-	async deleteReaction(req, res) {
-		console.log('Want to delete a reaction?');
+	async deleteComment(req, res) {
+		console.log('Want to delete a comment?');
 		try {
 
-			const deleteReaction = await Thought.findByIdAndUpdate(
-				{ _id: req.params.thoughtId },
-				{ $pull: { reactions: req.params.reactionId } },
+			const deleteComment = await Post.findByIdAndUpdate(
+				{ _id: req.params.postId },
+				{ $pull: { comment: req.params.commentId } },
 				{ runValidators: true, new: true }
 			)
-			if (!deleteReaction) {
-				return res.status(404).json({ message: 'No reaction was deleted' })
+			if (!deleteComment) {
+				return res.status(404).json({ message: 'No comment was deleted' })
 			}
-			res.status(200).json('The friend was removed from the user')
+			res.status(200).json('The comment was removed from the post')
 		} catch (error) {
 			res.status(500).json({ error })
 			console.log('check error');
