@@ -1,24 +1,24 @@
 const router = require('express').Router();
 const {
 	getAllPosts,
-	getPostsById,
-	createPosts,
-	updatePosts,
-	deletePosts,
+	getPostById,
+	createPost,
+	updatePost,
+	deletePost,
 	addComment,
 	deleteComment,
-} = require('../../controller/post-controller')
+} = require('../../controllers/post-controller')
 
 router
 	.route('/')
 	.get(getAllPosts)
-	.post(createPosts)
+	.post(createPost)
 
 router
 	.route('/:PostsId')
-	.get(getPostsById)
-	.put(updatePosts)
-	.delete(deletePosts)
+	.get(getPostById)
+	.put(updatePost)
+	.delete(deletePost)
 	.post(addComment);
 
 router
