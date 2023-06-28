@@ -12,17 +12,17 @@ const {
 router
 	.route('/')
 	.get(getAllPosts)
-	.post(createPost)
+	.post(createPost);
 
 router
-	.route('/:PostsId')
+	.route('/:postsId')
 	.get(getPostById)
 	.put(updatePost)
 	.delete(deletePost)
 	.post(addComment);
 
 router
-	.route("/:PostsId/comment/:commentId")
+	.route("/:postsId/comment/:commentId")
 	.delete(deleteComment);
 
 
