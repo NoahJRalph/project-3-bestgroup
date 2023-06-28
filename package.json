@@ -13,6 +13,8 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "concurrently": "^8.2.0"
+    "concurrently": "^8.2.0",
+    "eslint": "^8.43.0",
+    "eslint-plugin-react": "^7.32.2"
   }
 }

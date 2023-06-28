@@ -5,9 +5,9 @@ const {
 	createPosts,
 	updatePosts,
 	deletePosts,
-	addReaction,
-	deleteReaction,
-} = require('../../controllers/Posts-controller')
+	addComment,
+	deleteComment,
+} = require('../../controller/post-controller')
 
 router
 	.route('/')
@@ -19,11 +19,11 @@ router
 	.get(getPostsById)
 	.put(updatePosts)
 	.delete(deletePosts)
-	.post(addReaction);
+	.post(addComment);
 
 router
-	.route("/:PostsId/reaction/:reactionId")
-	.delete(deleteReaction);
+	.route("/:PostsId/comment/:commentId")
+	.delete(deleteComment);
 
 
 module.exports = router;

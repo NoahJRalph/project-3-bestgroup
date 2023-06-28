@@ -17,7 +17,30 @@ BrainSync is a full-stack MERN (MongoDB, Express.js, React, Node.js) application
 
 ## Installation
 
-concurrently "apollo-server-express": "^3.12.0",
+`npm i` the following
+
+* concurrently
+
+These are server dependencies:
+
+* apollo-server-express
+* bcrypt
+* graphql
+* jsonwebtoken
+* mongoose
+
+For the client side we used npm create-react-app, and then installed the following dependencies:
+
+* testing-library/jest-dom
+* testing-library/react
+* testing-library/user-event
+* react
+* react-dom
+* react-scripts
+* web-vitals
+
+On the client side we also installed Chakra UI using
+`npm i @chakra-ui/react @emotion/react @emotion/styled framer-motion`
 
 ## Usage
 
@@ -31,11 +54,11 @@ require a secure environment with user authentication.
 
 ## Contributing
 
-    Aaron
-    Brian
-    Mo
-    Noah
-    Phil
+[Aaron](https://github.com/KlosheKopa)
+[Brian](https://github.com/BrianMorse1)
+[Mo](https://github.com/bootcamp-Mo)
+[Noah](https://github.com/NoahJRalph)
+[Phil](https://github.com/PhilKubz)
 
 ## Tests
 
@@ -45,5 +68,5 @@ n/a
 
 Questions? Feel free to reach out through the following channels:
 
-- [GitHub](https://github.com/n/a)
-- Email: n/a
+* [GitHub](https://github.com/n/a)
+* Email: n/a
