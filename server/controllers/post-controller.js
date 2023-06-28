@@ -1,4 +1,5 @@
-const { Post } = require('../models/post')
+const Post = require('../models/post')
+const User = require('../models/user')
 
 module.exports = {
 	// get all Posts
@@ -26,7 +27,9 @@ module.exports = {
 
 	//create a new post
 	async createPost(req, res) {
+		console.log('are you creating a post?')
 		try {
+			console.log('Request Body:', req.body)
 			const newPost = await Post.create(req.body)
 
 			const user = await User.findOneAndUpdate(
@@ -40,6 +43,7 @@ module.exports = {
 			}
 			res.status(200).json(newPost)
 		} catch (error) {
+			console.error('Error:', error);
 			res.status(500).json(error)
 		}
 	},
@@ -48,20 +52,22 @@ module.exports = {
 	async updatePost(req, res) {
 		try {
 			const updatedPost = await Post.findByIdAndUpdate(
-				req.params.postId,
+				req.params.postsId,
 				req.body,
 				{
 					runValidators: true,
 					new: true
 				}
-			)
+			);
+
 			if (!updatedPost) {
-				throw Error;
-			} else {
-				res.status(201).json(updatedPost);
+				return res.status(404).json({ message: 'Post not found' });
 			}
+
+			res.status(200).json(updatedPost);
 		} catch (error) {
-			res.status(403).json(error)
+			console.error(error);
+			res.status(500).json({ message: 'An error occurred', error });
 		}
 	},
 
@@ -80,7 +86,7 @@ module.exports = {
 		console.log('Comment to a post')
 		try {
 			const post = await Post.findOneAndUpdate(
-				{ _id: req.params.postId },
+				{ _id: req.params.postsId },
 				{ $push: { reactions: [req.body] } },
 				{ runValidators: true, new: true }
 			)

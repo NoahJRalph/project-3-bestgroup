@@ -1,10 +1,9 @@
-
-const { Schema, model } = require('mongoose')
+const mongoose = require('mongoose');
 const CommentSchema = require('./comment')
 
 const moment = require('moment')
 
-const postSchema = new Schema(
+const postSchema = new mongoose.Schema(
 	{
 		postText: {
 			type: String,
@@ -33,6 +32,6 @@ const postSchema = new Schema(
 )
 
 
-const Post = model('Post', postSchema)
+const Post = mongoose.model('Post', postSchema)
 
 module.exports = Post
