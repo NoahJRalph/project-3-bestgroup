@@ -83,38 +83,38 @@ module.exports = {
 
 	//add comment to Post by id
 	async addComment(req, res) {
-		console.log('Comment to a post')
+		console.log('Comment to a post');
 		try {
 			const post = await Post.findOneAndUpdate(
 				{ _id: req.params.postsId },
-				{ $push: { reactions: [req.body] } },
+				{ $push: { comments: req.body } },
 				{ runValidators: true, new: true }
-			)
+			);
 			if (!post) {
-				return res.status(404).json({ message: 'No post was found' })
+				return res.status(404).json({ message: 'No post was found' });
 			}
-			res.status(200).json(post)
+			res.status(200).json(post);
 		} catch (error) {
-			res.status(500).json(error)
+			console.log(error);
+			res.status(500).json(error);
 		}
 	},
 
-	//delete reaction 
+	//delete comment 
 	async deleteComment(req, res) {
 		console.log('Want to delete a comment?');
 		try {
-
-			const deleteComment = await Post.findByIdAndUpdate(
-				{ _id: req.params.postId },
-				{ $pull: { comment: req.params.commentId } },
+			const deleteComment = await Post.findOneAndUpdate(
+				{ _id: req.params.postsId }, // Make sure this parameter name matches the route
+				{ $pull: { comments: { commentId: req.params.commentId } } }, // Assuming you are using 'comments' array
 				{ runValidators: true, new: true }
-			)
+			);
 			if (!deleteComment) {
-				return res.status(404).json({ message: 'No comment was deleted' })
+				return res.status(404).json({ message: 'No comment was deleted' });
 			}
-			res.status(200).json('The comment was removed from the post')
+			res.status(200).json('The comment was removed from the post');
 		} catch (error) {
-			res.status(500).json({ error })
+			res.status(500).json({ error });
 			console.log('check error');
 		}
 	}
