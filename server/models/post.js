@@ -4,7 +4,7 @@ const CommentSchema = require('./comment')
 
 const moment = require('moment')
 
-const PostSchema = new Schema(
+const postSchema = new Schema(
 	{
 		postText: {
 			type: String,
@@ -33,6 +33,6 @@ const PostSchema = new Schema(
 )
 
 
-const Post = model('Post', PostSchema)
+const Post = model('Post', postSchema)
 
 module.exports = Post
