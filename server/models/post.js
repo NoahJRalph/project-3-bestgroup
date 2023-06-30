@@ -19,7 +19,8 @@ const postSchema = new Schema(
 			type: String,
 			require: true
 		},
-		comments: [CommentSchema]
+		comments: [CommentSchema],
+		tags: [TagSchema]
 	},
 	{
 		toJSON: {
