@@ -1,14 +1,19 @@
-import { ChakraProvider } from '@chakra-ui/react'
-import logo from './logo.svg';
 import './App.css';
-import form from './pages/form';
+
+import React from 'react'
+
+// import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { ChakraProvider } from '@chakra-ui/react';
+
+import './App.css';
+import Form from './pages/Form';
 
 
 function App() {
   return (
-    <ChakraProvider>
-      <placeholder></placeholder>
-    </ChakraProvider>
+    <ChakraProvider >
+      <Form />
+    </ChakraProvider >
   )
 }
 
