@@ -1,9 +1,8 @@
-const mongoose = require('mongoose');
-const CommentSchema = require('./comment')
+const { Schema, model } = require('mongoose');
+const dateFormat = require('../utils/dateFormat');
 
-const moment = require('moment')
 
-const postSchema = new mongoose.Schema(
+const postSchema = new Schema(
 	{
 		postText: {
 			type: String,
@@ -14,9 +13,9 @@ const postSchema = new mongoose.Schema(
 		createdAt: {
 			type: Date,
 			default: Date.now,
-			get: (timestamp) => moment(timestamp).format('MMMM Do YYYY, h:mm:ss a')
+			get: (timestamp) => dateFormat(timestamp),
 		},
-		username: {
+		postAuthor: {
 			type: String,
 			require: true
 		},
@@ -32,6 +31,6 @@ const postSchema = new mongoose.Schema(
 )
 
 
-const Post = mongoose.model('Post', postSchema)
+const Post = model('Post', postSchema)
 
-module.exports = Post
+module.exports = Post;
