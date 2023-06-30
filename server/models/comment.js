@@ -7,7 +7,7 @@ const commentSchema = new Schema(
 			type: mongoose.SchemaTypes.ObjectId,
 			default: () => new mongoose.Types.ObjectId()
 		},
-		commentBody: {
+		commentText: {
 			type: String,
 			required: true,
 			maxlength: 280
