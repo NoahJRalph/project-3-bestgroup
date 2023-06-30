@@ -1,6 +1,9 @@
+import React from 'react'
+import { } from '@chakra-ui/react';
+
 //display area for other views
 function DisplayArea() {
-    return(
+    return (
         <main className='main-display'>stuff goes here </main>
     )
 };
