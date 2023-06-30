@@ -1,4 +1,5 @@
-const { Post } = require('../models')
+const Post = require('../models/post')
+const User = require('../models/user')
 
 module.exports = {
 	// get all Posts
@@ -26,7 +27,9 @@ module.exports = {
 
 	//create a new post
 	async createPost(req, res) {
+		console.log('are you creating a post?')
 		try {
+			console.log('Request Body:', req.body)
 			const newPost = await Post.create(req.body)
 
 			const user = await User.findOneAndUpdate(
@@ -40,6 +43,7 @@ module.exports = {
 			}
 			res.status(200).json(newPost)
 		} catch (error) {
+			console.error('Error:', error);
 			res.status(500).json(error)
 		}
 	},
@@ -48,20 +52,22 @@ module.exports = {
 	async updatePost(req, res) {
 		try {
 			const updatedPost = await Post.findByIdAndUpdate(
-				req.params.postId,
+				req.params.postsId,
 				req.body,
 				{
 					runValidators: true,
 					new: true
 				}
-			)
+			);
+
 			if (!updatedPost) {
-				throw Error;
-			} else {
-				res.status(201).json(updatedPost);
+				return res.status(404).json({ message: 'Post not found' });
 			}
+
+			res.status(200).json(updatedPost);
 		} catch (error) {
-			res.status(403).json(error)
+			console.error(error);
+			res.status(500).json({ message: 'An error occurred', error });
 		}
 	},
 
@@ -77,38 +83,38 @@ module.exports = {
 
 	//add comment to Post by id
 	async addComment(req, res) {
-		console.log('Comment to a post')
+		console.log('Comment to a post');
 		try {
 			const post = await Post.findOneAndUpdate(
-				{ _id: req.params.postId },
-				{ $push: { reactions: [req.body] } },
+				{ _id: req.params.postsId },
+				{ $push: { comments: req.body } },
 				{ runValidators: true, new: true }
-			)
+			);
 			if (!post) {
-				return res.status(404).json({ message: 'No post was found' })
+				return res.status(404).json({ message: 'No post was found' });
 			}
-			res.status(200).json(post)
+			res.status(200).json(post);
 		} catch (error) {
-			res.status(500).json(error)
+			console.log(error);
+			res.status(500).json(error);
 		}
 	},
 
-	//delete reaction 
+	//delete comment 
 	async deleteComment(req, res) {
 		console.log('Want to delete a comment?');
 		try {
-
-			const deleteComment = await Post.findByIdAndUpdate(
-				{ _id: req.params.postId },
-				{ $pull: { comment: req.params.commentId } },
+			const deleteComment = await Post.findOneAndUpdate(
+				{ _id: req.params.postsId }, // Make sure this parameter name matches the route
+				{ $pull: { comments: { commentId: req.params.commentId } } }, // Assuming you are using 'comments' array
 				{ runValidators: true, new: true }
-			)
+			);
 			if (!deleteComment) {
-				return res.status(404).json({ message: 'No comment was deleted' })
+				return res.status(404).json({ message: 'No comment was deleted' });
 			}
-			res.status(200).json('The comment was removed from the post')
+			res.status(200).json('The comment was removed from the post');
 		} catch (error) {
-			res.status(500).json({ error })
+			res.status(500).json({ error });
 			console.log('check error');
 		}
 	}

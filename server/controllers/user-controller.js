@@ -1,4 +1,4 @@
-const { User } = require('../models')
+const User = require('../models/user')
 
 module.exports = {
 	// get all users
@@ -27,11 +27,14 @@ module.exports = {
 
 	//create a new user
 	async createUser(req, res) {
+		console.log('are you creating a user?')
 		try {
+			console.log('Request Body:', req.body)
 			const newUser = await User.create(req.body)
 			res.status(200).json(newUser)
 		} catch (error) {
-			res.status(500).json({ error })
+			console.error(error)
+			res.status(500).json({ message: 'An error occurred', error })
 		}
 	},
 

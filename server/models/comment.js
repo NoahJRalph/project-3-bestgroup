@@ -1,14 +1,13 @@
-
-const { Schema, Types } = require('mongoose');
+const mongoose = require('mongoose');
 const moment = require('moment')
 
-const CommentSchema = new Schema(
+const CommentSchema = new mongoose.Schema(
 	{
 		commentId: {
-			type: Types.ObjectId,
-			default: () => new Types.ObjectId()
+			type: mongoose.SchemaTypes.ObjectId,
+			default: () => new mongoose.Types.ObjectId()
 		},
-		CommentBody: {
+		commentBody: {
 			type: String,
 			required: true,
 			maxlength: 280
@@ -31,5 +30,6 @@ const CommentSchema = new Schema(
 		_id: false
 	}
 );
+
 
 module.exports = CommentSchema;
