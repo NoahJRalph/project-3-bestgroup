@@ -5,8 +5,8 @@ const handleLogout = async () => {
             //need to add information from req based on model and how JWT works. I don't know what to add here at this time because we don't have JWT set up. Something else will need to go here to specify which user to logout through the logout route.
         });
         //this will redirect to the login route after logout is performed. Opportunity for other logic to be added here if needed.
-    window.location.href = '/login';
-    }catch{
+        window.location.href = '/login';
+    } catch {
         console.log('error logging out');
     }
 };
@@ -16,11 +16,11 @@ const handleLogout = async () => {
 
 //logout component here
 function Logout() {
-    return(
-          <button classname='logout-button' onClick={handleLogout}>
+    return (
+        <button classname='logout-button' onClick={handleLogout}>
             Logout
-          </button>
-        )
+        </button>
+    )
 };
 
-export default  Logout;
+export default Logout;
