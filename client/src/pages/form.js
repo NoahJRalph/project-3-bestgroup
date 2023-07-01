@@ -1,7 +1,9 @@
-import { Input, Stack, InputGroup, InputLeftElement, InputRightElement } from '@chakra-ui/react';
+import { Input, Stack, InputGroup, InputLeftElement } from '@chakra-ui/react';
 import { EmailIcon, LockIcon } from '@chakra-ui/icons';
 
-function form() {
+
+//? is this to sign in or to create a new user
+function Form() {
   return (
     <Stack spacing={4}>
       <InputGroup>
@@ -28,4 +30,4 @@ function form() {
   );
 }
 
-export default form;
+export default Form;

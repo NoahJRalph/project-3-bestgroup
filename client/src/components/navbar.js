@@ -1,9 +1,12 @@
+import React from 'react'
+import { } from '@chakra-ui/react';
+
 function NavBar() {
-    return(
-        <nav>
-           
-            <ul className='navbar-links'>
-            <li>
+  return (
+    <nav>
+
+      <ul className='navbar-links'>
+        <li>
           <button onClick={() => handleLinkClick('home')} className={activePage === 'home' ? 'active' : ''}>
             Home
           </button>
@@ -18,10 +21,10 @@ function NavBar() {
             Login
           </button>
         </li>
-        </ul>      
-        </nav>
-    )
+      </ul>
+    </nav>
+  )
 };
 
-export default  NavBar;
+export default NavBar;
 
