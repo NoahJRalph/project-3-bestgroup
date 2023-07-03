@@ -1,7 +1,7 @@
 const { Schema, model } = require('mongoose');
 const dateFormat = require('../utils/dateFormat');
-
-
+const commentSchema = require('./comment')
+const tagSchema = require('./tags')
 const postSchema = new Schema(
 	{
 		postTitle: {
@@ -21,12 +21,15 @@ const postSchema = new Schema(
 			default: Date.now,
 			get: (timestamp) => dateFormat(timestamp),
 		},
-		postAuthor: {
+		username: {
 			type: String,
 			require: true
 		},
-		comments: [CommentSchema],
-		tags: [TagSchema]
+		comments: [{
+			type: Schema.Types.ObjectId,
+			ref: 'Comment'
+		}],
+		tags: [tagSchema]
 	},
 	{
 		toJSON: {

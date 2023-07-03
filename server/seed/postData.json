@@ -1,0 +1,72 @@
+[
+	{
+		"postTitle": "The Noodle Chronicles",
+		"postText": "Join CaptainNoodles on a quest to find the perfect noodle!",
+		"username": "CaptainNoodles",
+        "comments": [],
+        "tag": []
+	},
+	{
+		"postTitle": "Bread Crusades: A Tale",
+		"postText": "The BreadCrusader shares the journey of fighting for the last loaf of bread in the store.",
+		"username": "BreadCrusader",
+        "comments": [],
+        "tag": []
+	},
+	{
+		"postTitle": "Space Rodeo",
+		"postText": "SpaceCowboy teaches you how to rope asteroids and ride comets in this thrilling space adventure.",
+		"username": "SpaceCowboy",
+        "comments": [],
+        "tag": []
+	},
+	{
+		"postTitle": "Waffles vs. Pancakes",
+		"postText": "WaffleWarrior and ThePancakePirate battle it out to see which breakfast is supreme!",
+		"username": "WaffleWarrior",
+        "comments": [],
+        "tag": []
+	},
+	{
+		"postTitle": "Pirate Pancake Recipe",
+		"postText": "ThePancakePirate shares a secret pirate pancake recipe passed down through generations.",
+		"username": "ThePancakePirate",
+        "comments": [],
+        "tag": []
+	},
+	{
+		"postTitle": "Squirrel Tales",
+		"postText": "SquirrelHugger tells the heartwarming stories of the squirrels she has befriended in the park.",
+		"username": "SquirrelHugger",
+        "comments": [],
+        "tag": []
+	},
+	{
+		"postTitle": "Banana Heist 101",
+		"postText": "BananaBandit shares tips and tricks on how to efficiently steal bananas from the local grocery store.",
+		"username": "BananaBandit",
+        "comments": [],
+        "tag": []
+	},
+	{
+		"postTitle": "Rainbows: Myths & Facts",
+		"postText": "RainbowRider unravels the mysteries and common misconceptions about rainbows.",
+		"username": "RainbowRider",
+        "comments": [],
+        "tag": []
+	},
+	{
+		"postTitle": "Potato Knighthood",
+		"postText": "PotatoPaladin shares the honorable path to becoming a defender of the mighty potato.",
+		"username": "PotatoPaladin",
+        "comments": [],
+        "tag": []
+	},
+	{
+		"postTitle": "Time Traveling Toast",
+		"postText": "TimeTravelingToaster recounts tales of toast from different eras and how it shaped history.",
+		"username": "TimeTravelingToaster",
+        "comments": [],
+        "tag": []
+	}
+]

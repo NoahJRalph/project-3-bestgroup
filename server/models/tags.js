@@ -1,4 +1,4 @@
-const {Schema, model} = require('mongoose');
+const { Schema } = require('mongoose');
 
 const tagSchema = new Schema({
     tagName: {
@@ -7,10 +7,8 @@ const tagSchema = new Schema({
         minLength: 1,
         maxLength: 280
     },
-    }
+});
 
-);
 
-const Tag = model('Tag', tagSchema);
 
-module.exports = Tag;
+module.exports = tagSchema;
