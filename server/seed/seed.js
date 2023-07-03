@@ -1,11 +1,11 @@
 const bcrypt = require('bcrypt');
 const db = require('../config/connection')
-const { User, Post, Comment, Tag } = require('../models');
+const { User, Post, Comment } = require('../models');
 
 const userData = require('./userData.json');
 const postData = require('./postData.json');
 const commentData = require('./commentData.json');
-const tagData = require('./tagData.json');
+// const tagData = require('./tagData.json');
 
 db.once('open', async () => {
 	//delete all existing documents
