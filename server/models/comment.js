@@ -1,12 +1,9 @@
 const { Schema, model } = require('mongoose');
+
 const dateFormat = require('../utils/dateFormat');
 
 const commentSchema = new Schema(
 	{
-		commentId: {
-			type: mongoose.SchemaTypes.ObjectId,
-			default: () => new mongoose.Types.ObjectId()
-		},
 		commentText: {
 			type: String,
 			required: true,
@@ -31,7 +28,6 @@ const commentSchema = new Schema(
 	}
 );
 
-const Comment = model('Comment', commentSchema)
-
+const Comment = model('Comment', commentSchema);
 
 module.exports = Comment;
