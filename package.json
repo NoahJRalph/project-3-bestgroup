@@ -1,7 +1,10 @@
 {
   "name": "project-3-bestgroup",
   "version": "1.0.0",
-  "description": "",
+  "description": "collaborative forum for online users",
+  "engines": {
+    "node": "18.16.0"
+  },
   "main": "server/server.js",
   "scripts": {
     "start": "node server/server.js",
