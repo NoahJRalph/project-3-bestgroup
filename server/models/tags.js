@@ -10,5 +10,4 @@ const tagSchema = new Schema({
 });
 
 
-
 module.exports = tagSchema;
