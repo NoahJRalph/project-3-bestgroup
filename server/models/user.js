@@ -1,4 +1,4 @@
-const {Schema, model} = require('mongoose');
+const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
 
 const userSchema = new Schema(
@@ -20,12 +20,14 @@ const userSchema = new Schema(
 			required: true,
 			minlength: 5,
 		},
-		posts: [
-			{
-				type: Schema.Types.ObjectId,
-				ref: 'Post'
-			}
-		],
+		posts: [{
+			type: Schema.Types.ObjectId,
+			ref: 'Post'
+		}],
+		comments: [{
+			type: Schema.Types.ObjectId,
+			ref: 'Comment'
+		}],
 	},
 	{
 		toJSON: {
@@ -41,10 +43,10 @@ userSchema.pre('save', async function (next) {
 		const saltRounds = 10;
 		this.password = await bcrypt.hash(this.password, saltRounds);
 	}
-  
+
 	next();
 });
-  
+
 userSchema.methods.isCorrectPassword = async function (password) {
 	return bcrypt.compare(password, this.password);
 };
@@ -52,3 +54,5 @@ userSchema.methods.isCorrectPassword = async function (password) {
 const User = model('User', userSchema);
 
 module.exports = User;
+
+
