@@ -6,7 +6,7 @@ import { ChakraProvider, Container, Box } from '@chakra-ui/react';
 
 import './App.css';
 // import Footer from './components/footer'
-import Homepage from './pages/Homepage';
+import Homepage from './pages/homepage';
 
 //! to Test stuff import file and <AddFileName /> and add it inside of the Box
 // this is a box[container[homepage][AddFileName]]

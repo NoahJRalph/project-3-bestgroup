@@ -9,7 +9,7 @@ import {
 	Button,
 	useDisclosure,
 } from '@chakra-ui/react';
-import Form from '../pages/Form';
+import Form from '../pages/form';
 
 
 
