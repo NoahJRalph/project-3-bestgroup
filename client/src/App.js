@@ -1,36 +1,46 @@
-import './App.css';
-
-import React from 'react'
-
+// app.js
+import React from 'react';
 import { ChakraProvider, Container, Box } from '@chakra-ui/react';
-
-import './App.css';
-// import Footer from './components/footer'
-import Homepage from './pages/Homepage';
-
-//! to Test stuff import file and <AddFileName /> and add it inside of the Box
-// this is a box[container[homepage][AddFileName]]
+import Homepage from './pages/homepage';
 
 function App() {
   return (
     <ChakraProvider>
       <Box
-        bg={'pink.200'}
-        p={'4'}
-        minH={'100vh'}>
+        bg="black"
+        p="4"
+        minH="100vh"
+        display="flex"
+        justifyContent="center"
+        alignItems="center"
+      >
         <Container
-          bg={'teal.400'}
-          maxWidth="1200px"
-          width={["100%", "80%", "60%"]} margin="auto">
+          bg="purple.300"
+          maxW={{ base: '90%', md: '1400px' }} // Set maxW using CSS media queries
+          width="100%" // Set width to 100%
+          p={[4, 8]}
+          borderRadius="md"
+          boxShadow="lg"
+          overflow="hidden" // Add overflow property
+        >
           <Homepage />
-          {/*< />  */}
         </Container>
       </Box>
-    </ChakraProvider >
-  )
+    </ChakraProvider>
+  );
 }
 
 export default App;
+
+
+
+
+
+
+
+
+
+
 
 
 /**========================================================================
