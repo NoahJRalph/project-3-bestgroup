@@ -18,8 +18,8 @@ BrainSync is a full-stack MERN (MongoDB, Express.js, React, Node.js) application
 ## Installation
 
 `npm i` the following
-`npm install @chakra-ui/icons`
-
+`npm install @chakra-ui/icons` Chakra Icons
+`npm install react-icons` React Icons
 * concurrently
 
 These are server dependencies:
