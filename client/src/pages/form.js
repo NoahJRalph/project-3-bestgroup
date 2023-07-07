@@ -1,5 +1,8 @@
-import { Input, Stack, InputGroup, InputLeftElement } from '@chakra-ui/react';
+import React from 'react';
+import { Input, Stack, InputGroup, InputLeftElement, Button } from '@chakra-ui/react';
 import { EmailIcon, LockIcon } from '@chakra-ui/icons';
+import { useMutation } from '@apollo/client';
+import { ADD__NEW_USER } from '../utils/mutations';
 
 
 //? is this to sign in or to create a new user
@@ -27,6 +30,9 @@ function Form() {
         </InputLeftElement>
         <Input type='password' placeholder='Password' id='newPassword' />
       </InputGroup>
+
+      <Button colorScheme='blue' size='md'>Submit</Button>
+
     </Stack>
   );
 }
