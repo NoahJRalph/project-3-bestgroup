@@ -1,6 +1,7 @@
 import { Container, Box, Heading, Text, Image, Stack, Center, VStack } from '@chakra-ui/react';
 import Brain from '../assets/brain.png'
 import SignInModal from '../components/modal-login';
+import NewPost from '../components/newPost';
 
 //todo: Make a Create new user button 
 //todo: Make it so that after user login/created the page sends the user to the Dashboard
@@ -23,7 +24,7 @@ function Homepage() {
 
 						<Stack direction='row' spacing={8}>
 							<SignInModal />
-							{/* <CreateNewUser /> */}
+							<NewPost />
 						</Stack>
 					</VStack>
 				</Center>

@@ -16,7 +16,8 @@ function App() {
     <ChakraProvider>
       <Box
         bg={'pink.200'}
-        p={'4'} >
+        p={'4'}
+        minH={'100vh'}>
         <Container
           bg={'teal.400'}
           maxWidth="1200px"
