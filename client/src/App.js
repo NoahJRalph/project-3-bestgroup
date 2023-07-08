@@ -1,31 +1,40 @@
 // app.js
 import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { ChakraProvider, Container, Box } from '@chakra-ui/react';
 import Homepage from './pages/homepage';
+import Dashboard from "./pages/Dashboard";
+import NavBar from './components/navbar';
 
 function App() {
   return (
     <ChakraProvider>
-      <Box
-        bg="black"
-        p="4"
-        minH="100vh"
-        display="flex"
-        justifyContent="center"
-        alignItems="center"
-      >
-        <Container
-          bg="purple.300"
-          maxW={{ base: '90%', md: '1400px' }} // Set maxW using CSS media queries
-          width="100%" // Set width to 100%
-          p={[4, 8]}
-          borderRadius="md"
-          boxShadow="lg"
-          overflow="hidden" // Add overflow property
+      <Router>
+        <Box
+          bg="black"
+          p="4"
+          minH="100vh"
+          display="flex"
+          justifyContent="center"
+          alignItems="center"
         >
-          <Homepage />
-        </Container>
-      </Box>
+          <Container
+            bg="purple.300"
+            maxW={{ base: '90%', md: '1400px' }} // Set maxW using CSS media queries
+            width="100%" // Set width to 100%
+            p={[4, 8]}
+            borderRadius="md"
+            boxShadow="lg"
+            overflow="hidden" // Add overflow property
+          >
+            <NavBar />
+            <Routes>
+              <Route path="/" element={<Homepage />}></Route>
+              <Route path="/" element={<Dashboard />}></Route>
+            </Routes>
+          </Container>
+        </Box>
+      </Router>
     </ChakraProvider>
   );
 }

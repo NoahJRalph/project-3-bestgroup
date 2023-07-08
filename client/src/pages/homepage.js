@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Box, Heading, Text, Image, Stack, Center, VStack, Button } from '@chakra-ui/react';
+import { Container, Box, Heading, Text, Image, Stack, Center, VStack, } from '@chakra-ui/react';
 import Brain from '../assets/brain.png';
 import SignInModal from '../components/accountCreation';
 import LoginModal from '../components/login';
