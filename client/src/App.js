@@ -30,7 +30,7 @@ function App() {
             <NavBar />
             <Routes>
               <Route path="/" element={<Homepage />}></Route>
-              <Route path="/" element={<Dashboard />}></Route>
+              <Route path="/dashboard" element={<Dashboard />}></Route>
             </Routes>
           </Container>
         </Box>
