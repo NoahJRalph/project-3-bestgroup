@@ -1,14 +1,14 @@
-// app.js
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { ChakraProvider, Container, Box } from '@chakra-ui/react';
 import Homepage from './pages/homepage';
-import Dashboard from "./pages/Dashboard";
+import Dashboard from './pages/Dashboard';
 import NavBar from './components/navbar';
+import theme from './theme'; // Import the custom theme
 
 function App() {
   return (
-    <ChakraProvider>
+    <ChakraProvider theme={theme}>
       <Router>
         <Box
           bg="black"
@@ -20,17 +20,17 @@ function App() {
         >
           <Container
             bg="purple.300"
-            maxW={{ base: '90%', md: '1400px' }} // Set maxW using CSS media queries
-            width="100%" // Set width to 100%
+            maxW={{ base: '90%', md: '1400px' }}
+            width="100%"
             p={[4, 8]}
             borderRadius="md"
             boxShadow="lg"
-            overflow="hidden" // Add overflow property
+            overflow="hidden"
           >
             <NavBar />
             <Routes>
-              <Route path="/" element={<Homepage />}></Route>
-              <Route path="/dashboard" element={<Dashboard />}></Route>
+              <Route path="/" element={<Homepage />} />
+              <Route path="/dashboard" element={<Dashboard />} />
             </Routes>
           </Container>
         </Box>
@@ -40,6 +40,7 @@ function App() {
 }
 
 export default App;
+
 
 
 
