@@ -12,7 +12,7 @@ function App() {
       <Router>
         <Box
           bg="black"
-          p="4"
+          p="2"
           minH="100vh"
           display="flex"
           justifyContent="center"
@@ -20,9 +20,9 @@ function App() {
         >
           <Container
             bg="purple.300"
-            maxW={{ base: '90%', md: '1400px' }}
+            maxW={{ base: '95%', md: '1400px' }}
             width="100%"
-            p={[4, 8]}
+            p={[6, 2]}
             borderRadius="md"
             boxShadow="lg"
             overflow="hidden"

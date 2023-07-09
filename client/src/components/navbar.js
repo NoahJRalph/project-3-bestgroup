@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Box, Flex, Spacer, Link as ChakraLink } from '@chakra-ui/react';
+import { Box, Flex, Spacer, Link as ChakraLink, Center } from '@chakra-ui/react';
 import SearchBar from '../components/searchbar';
 
 function NavBar() {
@@ -15,37 +15,48 @@ function NavBar() {
       width="100%"
       zIndex={10}
     >
-      <Flex>
+      <Flex alignItems="center">
         <Box
-          bg="black"
+          bg="white"
           mx={4}
           p={2}
           borderRadius="xl"
-          border="1px solid black"
+          border="7px solid black"
         >
-          <ChakraLink as={Link} to="/" color="white">
+          <ChakraLink as={Link} to="/" color="black">
             Homepage
           </ChakraLink>
         </Box>
         <Box
-          bg="black"
+          bg="white"
           mx={4}
           p={2}
           borderRadius="xl"
-          border="1px solid black"
+          border="7px solid black"
         >
-          <ChakraLink as={Link} to="/dashboard" color="white">
+          <ChakraLink as={Link} to="/dashboard" color="black">
             Dashboard
           </ChakraLink>
         </Box>
         <Spacer />
-        <SearchBar />
+        <Center>
+          <Box
+            bg="black"
+            mx={3}
+            p={2}
+            borderRadius="xl"
+            border="1px solid black"
+          >
+            <SearchBar />
+          </Box>
+        </Center>
       </Flex>
     </Box>
   );
 }
 
 export default NavBar;
+
 
 
     // <nav>

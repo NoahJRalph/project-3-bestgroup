@@ -1,6 +1,27 @@
 import React from 'react';
-import { Container, Box, Heading, Text } from '@chakra-ui/react';
+import { Container, Box, Text } from '@chakra-ui/react';
 import CardGrid from '../components/cardGrid';
+import PageHeader from '../components/pageHeader';
+
+function Dashboard() {
+  return (
+    <Container>
+      <Box>
+        <PageHeader />
+        <Box mt={20}>
+          <CardGrid />
+          <Text>Is the homepage the landing page?</Text>
+        </Box>
+      </Box>
+    </Container>
+  );
+}
+
+export default Dashboard;
+
+
+
+
 
 // todo: User profile
 // userName:
@@ -8,17 +29,3 @@ import CardGrid from '../components/cardGrid';
 // todo: Past viewed posts
 // todo: posts made by user
 // todo: comments made by user
-
-function Dashboard() {
-  return (
-    <Container>
-      <Box>
-        <Heading>Dashboard</Heading>
-        <CardGrid />
-        <Text>Is the homepage the landing page?</Text>
-      </Box>
-    </Container>
-  );
-}
-
-export default Dashboard;
