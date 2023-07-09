@@ -8,11 +8,11 @@ function Homepage() {
 	return (
 		<Container maxW="100%">
 			<Box position="relative" minHeight="80vh">
-				<Center bg="black" py={8} boxShadow="0 0 7px 3px white" borderRadius="xl">
+				<Center bg="black" py={4} boxShadow="0 0 7px 3px white" borderRadius="xl">
 					<VStack spacing={4} color="white" textAlign="center">
 						<Heading>Brainsync</Heading>
 						<Image
-							boxSize="150px"
+							boxSize="80px"
 							objectFit="cover"
 							maxW={{ base: '100%', sm: '200px' }}
 							src={Brain}
