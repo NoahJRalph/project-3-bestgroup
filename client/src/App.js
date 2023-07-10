@@ -1,4 +1,6 @@
 import React from 'react';
+import { ApolloProvider } from '@apollo/client';
+import client from './utils/apolloClient';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { ChakraProvider, Container, Box } from '@chakra-ui/react';
 import Homepage from './pages/homepage';
@@ -6,36 +8,41 @@ import Dashboard from './pages/Dashboard';
 import NavBar from './components/navbar';
 import theme from './theme'; // Import the custom theme
 
+
+
 function App() {
   return (
-    <ChakraProvider theme={theme}>
-      <Router>
-        <Box
-          bg="black"
-          p="2"
-          minH="100vh"
-          display="flex"
-          justifyContent="center"
-          alignItems="center"
-        >
-          <Container
-            bg="purple.300"
-            maxW={{ base: '95%', md: '1400px' }}
-            width="100%"
-            p={[6, 2]}
-            borderRadius="md"
-            boxShadow="lg"
-            overflow="hidden"
+
+    <ApolloProvider client={client}>
+      <ChakraProvider theme={theme}>
+        <Router>
+          <Box
+            bg="black"
+            p="2"
+            minH="100vh"
+            display="flex"
+            justifyContent="center"
+            alignItems="center"
           >
-            <NavBar />
-            <Routes>
-              <Route path="/" element={<Homepage />} />
-              <Route path="/dashboard" element={<Dashboard />} />
-            </Routes>
-          </Container>
-        </Box>
-      </Router>
-    </ChakraProvider>
+            <Container
+              bg="purple.300"
+              maxW={{ base: '95%', md: '1400px' }}
+              width="100%"
+              p={[6, 2]}
+              borderRadius="md"
+              boxShadow="lg"
+              overflow="hidden"
+            >
+              <NavBar />
+              <Routes>
+                <Route path="/" element={<Homepage />} />
+                <Route path="/dashboard" element={<Dashboard />} />
+              </Routes>
+            </Container>
+          </Box>
+        </Router>
+      </ChakraProvider>
+    </ApolloProvider>
   );
 }
 
