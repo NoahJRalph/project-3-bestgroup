@@ -2,13 +2,38 @@ import React from 'react';
 import { Input, Stack, InputGroup, InputLeftElement, Button } from '@chakra-ui/react';
 import { EmailIcon, LockIcon } from '@chakra-ui/icons';
 import { useMutation } from '@apollo/client';
-import { ADD__NEW_USER } from '../utils/mutations';
+import { ADD_NEW_USER } from '../utils/mutations';
+
+
+//front end functionality for creating a new user
+const formHandler = async (event) => {
+  event.preventDefault();
+  const newUsername = event.target.elements.newUsername.value;
+  const newEmail = event.target.elements.newEmail.value;
+  const newPassword = event.target.elements.newPassword.value;
+
+  try {
+    const [addNewUser] = useMutation(ADD_NEW_USER);
+    const { data } = await addNewUser({
+      variables: {
+        username: newUsername,
+        email: newEmail,
+        password: newPassword,
+      },
+    });
+  }catch (error){
+    console.error(error);
+  }
+}
+
+
+
 
 
 //? is this to sign in or to create a new user
 function Form() {
   return (
-    //I added id's to all of these elements thinking they were necessary to get specific information from different forms. If things are messing up, delete here first. Brian
+    <form onSubmit={formHandler}>
     <Stack spacing={4}>
       <InputGroup>
         <InputLeftElement pointerEvents='none'>
@@ -34,7 +59,10 @@ function Form() {
       <Button colorScheme='blue' size='md'>Submit</Button>
 
     </Stack>
+    </form>
   );
 }
+
+
 
 export default Form;
