@@ -1,35 +1,56 @@
-import './App.css';
-
-import React from 'react'
-
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { ChakraProvider, Container, Box } from '@chakra-ui/react';
-
-import './App.css';
-// import Footer from './components/footer'
 import Homepage from './pages/homepage';
-
-//! to Test stuff import file and <AddFileName /> and add it inside of the Box
-// this is a box[container[homepage][AddFileName]]
+import Dashboard from './pages/Dashboard';
+import NavBar from './components/navbar';
+import theme from './theme'; // Import the custom theme
 
 function App() {
   return (
-    <ChakraProvider>
-      <Box
-        bg={'pink.200'}
-        p={'4'} >
-        <Container
-          bg={'teal.400'}
-          maxWidth="1200px"
-          width={["100%", "80%", "60%"]} margin="auto">
-          <Homepage />
-          {/*< />  */}
-        </Container>
-      </Box>
-    </ChakraProvider >
-  )
+    <ChakraProvider theme={theme}>
+      <Router>
+        <Box
+          bg="black"
+          p="2"
+          minH="100vh"
+          display="flex"
+          justifyContent="center"
+          alignItems="center"
+        >
+          <Container
+            bg="purple.300"
+            maxW={{ base: '95%', md: '1400px' }}
+            width="100%"
+            p={[6, 2]}
+            borderRadius="md"
+            boxShadow="lg"
+            overflow="hidden"
+          >
+            <NavBar />
+            <Routes>
+              <Route path="/" element={<Homepage />} />
+              <Route path="/dashboard" element={<Dashboard />} />
+            </Routes>
+          </Container>
+        </Box>
+      </Router>
+    </ChakraProvider>
+  );
 }
 
 export default App;
+
+
+
+
+
+
+
+
+
+
+
 
 
 /**========================================================================
