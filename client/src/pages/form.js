@@ -21,6 +21,7 @@ const formHandler = async (event) => {
         password: newPassword,
       },
     });
+    console.log(data);
   }catch (error){
     console.error(error);
   }
