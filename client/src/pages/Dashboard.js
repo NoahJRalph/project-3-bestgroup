@@ -1,7 +1,7 @@
 import React from 'react';
 import { Container, Box, Flex } from '@chakra-ui/react';
-import CardGrid from '../components/cardGrid';
-import PageHeader from '../components/pageHeader';
+import CardGrid from '../components/postRelated/cardGrid';
+import PageHeader from '../components/layouts/pageHeader';
 
 function Dashboard() {
   return (

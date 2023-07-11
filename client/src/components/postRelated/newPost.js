@@ -16,8 +16,8 @@ import {
   Input,
 } from '@chakra-ui/react';
 import { useMutation } from '@apollo/client';
-import { ADD_POST } from '../utils/mutations';
-import Auth from '../utils/auth';
+import { ADD_POST } from '../../utils/mutations';
+import Auth from '../../utils/auth';
 import { RiAddLine } from 'react-icons/ri';
 
 const NewPost = () => {

@@ -5,8 +5,8 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { ChakraProvider, Container, Box } from '@chakra-ui/react';
 import Homepage from './pages/homepage';
 import Dashboard from './pages/Dashboard';
-import NavBar from './components/navbar';
-import theme from './theme';
+import NavBar from './components/layouts/navbar';
+
 
 
 
@@ -14,25 +14,25 @@ function App() {
   return (
 
     <ApolloProvider client={client}>
-      <ChakraProvider theme={theme}>
+      <ChakraProvider >
         <Router>
-        <Box
-          bg="black"
-          p="2"
-          minH="100vh"
-          display="flex"
-          justifyContent="center"
-          alignItems="center"
-        >
-          <Container
-            bg="purple.300"
-            maxW={{ base: '95%', md: '1400px', lg: '90vw', xl: '80vw' }}
-            width="100%"
-            p={[6, 2]}
-            borderRadius="md"
-            boxShadow="lg"
-            overflow="hidden"
+          <Box
+            bg="black"
+            p="2"
+            minH="100vh"
+            display="flex"
+            justifyContent="center"
+            alignItems="center"
           >
+            <Container
+              bg="purple.300"
+              maxW={{ base: '95%', md: '1400px', lg: '90vw', xl: '80vw' }}
+              width="100%"
+              p={[6, 2]}
+              borderRadius="md"
+              boxShadow="lg"
+              overflow="hidden"
+            >
               <NavBar />
               <Routes>
                 <Route path="/" element={<Homepage />} />

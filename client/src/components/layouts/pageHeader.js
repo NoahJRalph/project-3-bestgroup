@@ -15,15 +15,14 @@ import {
   PopoverCloseButton,
   useMediaQuery,
 } from '@chakra-ui/react';
-import Brain from '../assets/brain.png';
-import Logout from './logout';
+import { useQuery } from '@apollo/client';
+import { QUERY_ME } from '../../utils/queries';
+import Brain from '../../assets/brain.png';
+import Logout from '../loginOut/logout';
 
 function PageHeader() {
-  const currentUser = {
-    name: 'John Doe',
-    avatar: 'https://example.com/avatar.jpg',
-  };
-
+  const currentUser = useQuery(QUERY_ME)
+  console.log({ currentUser })
   const currentPage = 'Dashboard'; // Placeholder for the current page
 
   const [isLargerThanMobile] = useMediaQuery('(min-width: 480px)');

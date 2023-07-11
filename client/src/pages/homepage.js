@@ -1,8 +1,8 @@
 import React from 'react';
 import { Container, Box, Heading, Text, Image, Stack, Center, VStack, } from '@chakra-ui/react';
 import Brain from '../assets/brain.png';
-import SignInModal from '../components/accountCreation';
-import LoginModal from '../components/login';
+import SignInModal from '../components/newUser/accountCreation';
+import LoginModal from '../components/loginOut/login';
 
 function Homepage() {
 	return (
