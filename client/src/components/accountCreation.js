@@ -15,6 +15,12 @@ import { ADD_NEW_USER } from '../utils/mutations';
 
 
 
+
+
+
+function CreateUserModal() {
+	const { isOpen, onOpen, onClose } = useDisclosure()
+
 // functionality for creating a new user
 const formHandler = async (event) => {
 	event.preventDefault();
@@ -37,12 +43,6 @@ const formHandler = async (event) => {
 	}
   }
   
-
-
-
-function CreateUserModal() {
-	const { isOpen, onOpen, onClose } = useDisclosure()
-
 	return (
 		<form onSubmit={formHandler}>
 			<Button onClick={onOpen}>Create Account</Button>
