@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { Input, IconButton, Flex, Button } from '@chakra-ui/react';
+import { Input, IconButton, Flex, Button, Modal, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalBody } from '@chakra-ui/react';
 import { SearchIcon } from '@chakra-ui/icons';
 
 function SearchBar() {
   const [searchQuery, setSearchQuery] = useState('');
   const [isMobile, setIsMobile] = useState(false);
-  const [showInput, setShowInput] = useState(false);
+  const [showInputModal, setShowInputModal] = useState(false);
 
   const handleSearch = () => {
     // Handle search logic here
@@ -16,8 +16,8 @@ function SearchBar() {
     setSearchQuery(event.target.value);
   };
 
-  const toggleInput = () => {
-    setShowInput(!showInput);
+  const toggleInputModal = () => {
+    setShowInputModal(!showInputModal);
   };
 
   // Check if screen size is mobile
@@ -41,21 +41,30 @@ function SearchBar() {
         <Button
           colorScheme="gray"
           size="md"
-          onClick={toggleInput}
+          onClick={toggleInputModal}
           variant="solid"
         >
-          {showInput ? 'Search' : <SearchIcon />}
+          <SearchIcon />
         </Button>
-        {showInput && (
-          <Input
-            placeholder="Search"
-            value={searchQuery}
-            onChange={handleChange}
-            size="md"
-            variant="filled"
-            ml={2}
-          />
-        )}
+        <Modal isOpen={showInputModal} onClose={toggleInputModal}>
+          <ModalOverlay />
+          <ModalContent>
+            <ModalHeader>Search</ModalHeader>
+            <ModalCloseButton />
+            <ModalBody>
+              <Input
+                placeholder="Search"
+                value={searchQuery}
+                onChange={handleChange}
+                size="md"
+                variant="filled"
+              />
+              <Button mt={4} colorScheme="blue" onClick={handleSearch}>
+                Search
+              </Button>
+            </ModalBody>
+          </ModalContent>
+        </Modal>
       </Flex>
     );
   }
@@ -83,6 +92,3 @@ function SearchBar() {
 }
 
 export default SearchBar;
-
-
-// Review mobile size functionality of search button

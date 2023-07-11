@@ -1,14 +1,19 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Box, Flex, Spacer, Link as ChakraLink, Center } from '@chakra-ui/react';
+import { Box, Flex, Spacer, useBreakpointValue, Link as ChakraLink, Icon } from '@chakra-ui/react';
+import { AiOutlineHome, AiOutlineDashboard } from 'react-icons/ai';
 import SearchBar from '../components/searchbar';
+import CreatePostButton from '../components/createPostButton';
+import NewPost from './newPost';
 
 function NavBar() {
+  const isMobile = useBreakpointValue({ base: true, md: false });
+
   return (
     <Box
       bg="purple.300"
       border="3px solid black"
-      py={2}
+      py={1}
       position="fixed"
       bottom={0}
       left={0}
@@ -18,38 +23,69 @@ function NavBar() {
       <Flex alignItems="center">
         <Box
           bg="white"
-          mx={4}
-          p={2}
+          mx={2}
+          p={1}
           borderRadius="xl"
-          border="7px solid black"
+          border="3px solid black"
+          width={isMobile ? '25%' : 'auto'}
+          display="flex"
+          alignItems="center"
+          justifyContent={isMobile ? 'center' : 'flex-start'}
         >
-          <ChakraLink as={Link} to="/" color="black">
-            Homepage
-          </ChakraLink>
+          {isMobile ? (
+            <Icon as={AiOutlineHome} boxSize={4} />
+          ) : (
+            <ChakraLink as={Link} to="/" color="black">
+              Homepage
+            </ChakraLink>
+          )}
         </Box>
         <Box
           bg="white"
-          mx={4}
-          p={2}
+          mx={2}
+          p={1}
           borderRadius="xl"
-          border="7px solid black"
+          border="3px solid black"
+          width={isMobile ? '25%' : 'auto'}
+          display="flex"
+          alignItems="center"
+          justifyContent={isMobile ? 'center' : 'flex-start'}
         >
-          <ChakraLink as={Link} to="/dashboard" color="black">
-            Dashboard
-          </ChakraLink>
+          {isMobile ? (
+            <Icon as={AiOutlineDashboard} boxSize={4} />
+          ) : (
+            <ChakraLink as={Link} to="/dashboard" color="black">
+              Dashboard
+            </ChakraLink>
+          )}
         </Box>
         <Spacer />
-        <Center>
-          <Box
-            bg="black"
-            mx={3}
-            p={2}
-            borderRadius="xl"
-            border="1px solid black"
-          >
-            <SearchBar />
-          </Box>
-        </Center>
+        <Box
+          bg="white"
+          mx={2}
+          p={1}
+          borderRadius="xl"
+          border="3px solid black"
+          width={isMobile ? '25%' : 'auto'}
+          display="flex"
+          alignItems="center"
+          justifyContent={isMobile ? 'center' : 'flex-start'}
+        >
+          <NewPost />
+        </Box>
+        <Box
+          bg="white"
+          mx={2}
+          p={1}
+          borderRadius="xl"
+          border="3px solid black"
+          width={isMobile ? '25%' : 'auto'}
+          display="flex"
+          alignItems="center"
+          justifyContent={isMobile ? 'center' : 'flex-start'}
+        >
+          <SearchBar />
+        </Box>
       </Flex>
     </Box>
   );
