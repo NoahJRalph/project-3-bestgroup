@@ -5,6 +5,7 @@ import {
   CardBody,
   CardFooter,
   Box,
+  Button,
   useBreakpointValue,
   Popover,
   PopoverTrigger,
@@ -13,11 +14,9 @@ import {
   PopoverArrow,
   PopoverCloseButton,
   IconButton,
-  Button,
-  HStack,
   Flex,
 } from '@chakra-ui/react';
-import { Avatar, Heading, Text } from '@chakra-ui/react';
+import { Heading, Text } from '@chakra-ui/react';
 import { BsThreeDotsVertical } from 'react-icons/bs';
 import { BiChat, BiShare } from 'react-icons/bi';
 
@@ -26,14 +25,14 @@ function PostCard() {
 
   return (
     <Card
-      w={isMobile ? '100%' : { base: '100%', md: '85%', lg: '1000px' }}
+      w={isMobile ? '100%' : { base: '100%', md: '85%', lg: '100%' }}
       mx="auto"
-      p={isMobile ? 4 : 4}
+      p={isMobile ? 3 : 4}
       my={isMobile ? 1 : 4}
     >
       <CardHeader>
         <Flex justify="space-between" align="center">
-          <Flex gap="4" alignItems="center">
+          <Flex gap="2" alignItems="center">
             <Box>
               <Heading size="sm">username</Heading>
               <Text>timestamp</Text>
@@ -57,6 +56,7 @@ function PostCard() {
                     Edit
                   </Button>
                   <Button variant="ghost">Delete</Button>
+                  <Button variant="ghost">Ignore</Button>
                 </Flex>
               </PopoverBody>
             </PopoverContent>
@@ -71,27 +71,27 @@ function PostCard() {
       </CardBody>
       <CardFooter>
         <Box
-          bg="gray.200"
+          bg="gray.400"
           p={0}
           width="100%"
           position="absolute"
           bottom={0}
           left={0}
-          borderRadius="xl"
+          borderRadius="x1"
           borderTopRadius={0}
         >
           {isMobile ? (
-            <Flex justifyContent="space-between" alignItems="center" px={4}>
-              <IconButton variant="ghost" aria-label="Comment" icon={<BiChat />} />
-              <IconButton variant="ghost" aria-label="Share" icon={<BiShare />} />
+            <Flex justifyContent="space-evenly" alignItems="center" px={4}>
+              <IconButton variant="ghost" aria-label="Comment" icon={<BiChat />} w="40%" />
+              <IconButton variant="ghost" aria-label="Share" icon={<BiShare />} w="40%" />
             </Flex>
           ) : (
             <Flex justifyContent="center" alignItems="center">
-              <Button flex="1" variant="ghost" leftIcon={<BiChat />}>
-                Comment
+              <Button flex="1" variant="ghost" leftIcon={<BiChat />} w="40%">
+                {isMobile ? null : 'Comment'}
               </Button>
-              <Button flex="1" variant="ghost" leftIcon={<BiShare />}>
-                Share
+              <Button flex="1" variant="ghost" leftIcon={<BiShare />} w="40%">
+                {isMobile ? null : 'Share'}
               </Button>
             </Flex>
           )}
