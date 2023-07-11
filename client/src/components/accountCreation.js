@@ -10,8 +10,6 @@ import {
 	useDisclosure,
 } from '@chakra-ui/react';
 import Form from './accountCreationForm';
-import { useMutation } from '@apollo/client';
-import { ADD_NEW_USER } from '../utils/mutations';
 
 
 
@@ -21,30 +19,10 @@ import { ADD_NEW_USER } from '../utils/mutations';
 function CreateUserModal() {
 	const { isOpen, onOpen, onClose } = useDisclosure()
 
-// functionality for creating a new user
-const formHandler = async (event) => {
-	event.preventDefault();
-	const newUsername = event.target.elements.newUsername.value;
-	const newEmail = event.target.elements.newEmail.value;
-	const newPassword = event.target.elements.newPassword.value;
-  
-	try {
-	  const [addNewUser] = useMutation(ADD_NEW_USER);
-	  const { data } = await addNewUser({
-		variables: {
-		  username: newUsername,
-		  email: newEmail,
-		  password: newPassword,
-		},
-	  });
-	  console.log(data);
-	}catch (error){
-	  console.error(error);
-	}
-  }
+
   
 	return (
-		<form onSubmit={formHandler}>
+		<>
 			<Button onClick={onOpen}>Create Account</Button>
 
 			<Modal isOpen={isOpen} onClose={onClose}>
@@ -64,7 +42,7 @@ const formHandler = async (event) => {
 					</ModalFooter>
 				</ModalContent>
 			</Modal>
-		</form>
+		</>
 	)
 }
 export default CreateUserModal
