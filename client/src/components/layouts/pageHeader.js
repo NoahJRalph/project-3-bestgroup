@@ -21,8 +21,8 @@ import Brain from '../../assets/brain.png';
 import Logout from '../loginOut/logout';
 
 function PageHeader() {
-  const currentUser = useQuery(QUERY_ME)
-  console.log({ currentUser })
+  const currentUser = useQuery(QUERY_ME);
+  console.log({ currentUser });
   const currentPage = 'Dashboard'; // Placeholder for the current page
 
   const [isLargerThanMobile] = useMediaQuery('(min-width: 480px)');
@@ -37,7 +37,7 @@ function PageHeader() {
       width="100%"
       zIndex={10}
       border="3px solid black"
-      justify="center" // Center the content horizontally
+      justify="center"
     >
       <Spacer />
       <Box
@@ -66,12 +66,12 @@ function PageHeader() {
         </Flex>
       </Box>
       <Spacer />
-      <Flex align="center">
-        {isLargerThanMobile ? (
-          <>
+      <Flex align="center" position="relative">
+        <Box position="absolute" right="0">
+          {isLargerThanMobile ? (
             <Popover placement="bottom-end">
               <PopoverTrigger>
-                <Box pr={2}> {/* Add padding-right */}
+                <Box pr={4}>
                   <Avatar name={currentUser.name} src={currentUser.avatar} size="md" cursor="pointer" />
                 </Box>
               </PopoverTrigger>
@@ -83,26 +83,24 @@ function PageHeader() {
                 </PopoverBody>
               </PopoverContent>
             </Popover>
-          </>
-        ) : (
-          <Popover placement="bottom-end">
-            <PopoverTrigger>
-              <Avatar name={currentUser.name} src={currentUser.avatar} size="md" cursor="pointer" />
-            </PopoverTrigger>
-            <PopoverContent>
-              <PopoverArrow />
-              <PopoverCloseButton />
-              <PopoverBody>
-                <Logout />
-              </PopoverBody>
-            </PopoverContent>
-          </Popover>
-        )}
+          ) : (
+            <Popover placement="bottom-end">
+              <PopoverTrigger>
+                <Avatar name={currentUser.name} src={currentUser.avatar} size="md" cursor="pointer" />
+              </PopoverTrigger>
+              <PopoverContent>
+                <PopoverArrow />
+                <PopoverCloseButton />
+                <PopoverBody>
+                  <Logout />
+                </PopoverBody>
+              </PopoverContent>
+            </Popover>
+          )}
+        </Box>
       </Flex>
     </Flex>
   );
 }
 
 export default PageHeader;
-
-
