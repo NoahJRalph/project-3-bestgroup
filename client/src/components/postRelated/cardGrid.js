@@ -1,6 +1,6 @@
 import React from 'react';
 import { SimpleGrid, Flex } from '@chakra-ui/react';
-import PostCard from '../components/postCard';
+import PostCard from './postCard';
 
 function CardGrid() {
   return (

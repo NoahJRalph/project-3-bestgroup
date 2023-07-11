@@ -9,8 +9,8 @@ import {
   Icon,
 } from '@chakra-ui/react';
 import { AiOutlineHome, AiOutlineDashboard } from 'react-icons/ai';
-import SearchBar from '../components/searchbar';
-import NewPost from './newPost';
+import SearchBar from './searchbar';
+import NewPost from '../postRelated/newPost';
 
 function NavBar() {
   const isMobile = useBreakpointValue({ base: true, md: false });

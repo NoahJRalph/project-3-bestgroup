@@ -20,7 +20,7 @@ function CreateUserModal() {
 	const { isOpen, onOpen, onClose } = useDisclosure()
 
 
-  
+
 	return (
 		<>
 			<Button onClick={onOpen}>Create Account</Button>
