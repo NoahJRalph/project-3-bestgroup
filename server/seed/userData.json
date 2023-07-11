@@ -2,71 +2,51 @@
 	{
 		"username": "CaptainNoodles",
 		"email": "noodlycaptain@example.com",
-		"password": "password1",
-        "posts": [],
-        "comments": []
+		"password": "password1"
 	},
 	{
 		"username": "BreadCrusader",
 		"email": "crusadingforbread@example.com",
-		"password": "password2",
-        "posts": [],
-        "comments": []
+		"password": "password2"
 	},
 	{
 		"username": "SpaceCowboy",
 		"email": "howdypartnerinspace@example.com",
-		"password": "password3",
-        "posts": [],
-        "comments": []
+		"password": "password3"
 	},
 	{
 		"username": "WaffleWarrior",
 		"email": "wafflesandbattles@example.com",
-		"password": "password4",
-        "posts": [],
-        "comments": []
+		"password": "password4"
 	},
 	{
 		"username": "ThePancakePirate",
 		"email": "yarrrrrpancakes@example.com",
-		"password": "password5",
-        "posts": [],
-        "comments": []
+		"password": "password5"
 	},
 	{
 		"username": "SquirrelHugger",
 		"email": "squirrelsnhugs@example.com",
-		"password": "password6",
-        "posts": [],
-        "comments": []
+		"password": "password6"
 	},
 	{
 		"username": "BananaBandit",
 		"email": "stealingbananas@example.com",
-		"password": "password7",
-        "posts": [],
-        "comments": []
+		"password": "password7"
 	},
 	{
 		"username": "RainbowRider",
 		"email": "ridingrainbows@example.com",
-		"password": "password8",
-        "posts": [],
-        "comments": []
+		"password": "password8"
 	},
 	{
 		"username": "PotatoPaladin",
 		"email": "defenderofpotatoes@example.com",
-		"password": "password9",
-        "posts": [],
-        "comments": []
+		"password": "password9"
 	},
 	{
 		"username": "TimeTravelingToaster",
 		"email": "toastytravels@example.com",
-		"password": "password10",
-        "posts": [],
-        "comments": []
+		"password": "password10"
 	}
 ]
