@@ -6,8 +6,7 @@
 		"comments": [{
 			"commentText": "I once met a noodle that could sing!",
 			"commentAuthor": "RainbowRider"
-		}],
-        "tag": []
+		}]
 	},
 	{
 		"postTitle": "Bread Crusades: A Tale",
@@ -16,8 +15,7 @@
         "comments": [{
 					"commentText": "The Great Bread War of 1923 was a sight to behold!",
 		"commentAuthor": "TimeTravelingToaster"
-				}],
-        "tag": []
+				}]
 	},
 	{
 		"postTitle": "Space Rodeo",
@@ -26,8 +24,7 @@
         "comments": [{
 					"commentText": "Can you lasso a black hole?",
 		"commentAuthor": "CaptainNoodles"
-				}],
-        "tag": []
+				}]
 	},
 	{
 		"postTitle": "Waffles vs. Pancakes",
@@ -36,8 +33,7 @@
 		"comments": [{
 			"commentText": "Team Waffles! They have built-in syrup pockets.",
 		"commentAuthor": "WaffleWarrior"
-			}],
-        "tag": []
+			}]
 	},
 	{
 		"postTitle": "Pirate Pancake Recipe",
@@ -46,8 +42,7 @@
 		"comments": [{
 			"commentText": "I heard squirrels are actually secret agents.",
 			"commentAuthor": "BananaBandit"
-			}],
-        "tag": []
+			}]
 	},
 	{
 		"postTitle": "Squirrel Tales",
@@ -56,8 +51,7 @@
 		"comments": [{
 			"commentText": "I heard squirrels are actually secret agents.",
 			"commentAuthor": "BananaBandit"
-			}],
-        "tag": []
+			}]
 	},
 	{
 		"postTitle": "Banana Heist 101",
@@ -66,8 +60,7 @@
 		"comments": [{
 			"commentText": "Bananas are the ultimate heist tool, they can be used as a disguise AND a weapon!",
 			"commentAuthor": "PotatoPaladin"
-			}],
-        "tag": []
+			}]
 	},
 	{
 		"postTitle": "Rainbows: Myths & Facts",
@@ -76,8 +69,7 @@
 		"comments": [{
 			"commentText": "Did you know that rainbows are actually portals to other dimensions?",
 			"commentAuthor": "SquirrelHugger"
-			}],
-        "tag": []
+			}]
 	},
 	{
 		"postTitle": "Potato Knighthood",
@@ -86,8 +78,7 @@
 		"comments": [{
 			"commentText": "All hail the mighty potato!",
 			"commentAuthor": "BreadCrusader"
-			}],
-        "tag": []
+			}]
 	},
 	{
 		"postTitle": "Time Traveling Toast",
@@ -96,7 +87,6 @@
 		"comments": [{
 			"commentText": "Toast is the bread of time travelers!",
 			"commentAuthor": "SpaceCowboy"
-			}],
-        "tag": []
+			}]
 	}
 ]
