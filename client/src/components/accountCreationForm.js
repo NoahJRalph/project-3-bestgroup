@@ -15,6 +15,8 @@ function Form() {
   // functionality for creating a new user
   const FormHandler = async (event) => {
     event.preventDefault();
+
+    //CHANGE ME CHANGE ME
     const newUsername = event.target.elements.newUsername.value;
     const newEmail = event.target.elements.newEmail.value;
     const newPassword = event.target.elements.newPassword.value;
@@ -40,21 +42,21 @@ function Form() {
         <InputLeftElement pointerEvents='none'>
           <FaUserAlt color='gray.300' size={16} />
         </InputLeftElement>
-        <Input type='text' placeholder='Username' />
+        <Input type='text' placeholder='Username' name='newUsername' />
       </InputGroup>
 
       <InputGroup>
         <InputLeftElement pointerEvents='none'>
           <EmailIcon color='black' />
         </InputLeftElement>
-        <Input type='email' placeholder='Email' />
+        <Input type='email' placeholder='Email' name='newEmail' />
       </InputGroup>
 
       <InputGroup>
         <InputLeftElement pointerEvents='none'>
           <LockIcon color='black' />
         </InputLeftElement>
-        <Input type='password' placeholder='Password' />
+        <Input type='password' placeholder='Password' name='newPassword' />
       </InputGroup>
     </Stack>
     </form>
