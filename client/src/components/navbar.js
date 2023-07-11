@@ -1,13 +1,24 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { Box, Flex, Spacer, useBreakpointValue, Link as ChakraLink, Icon } from '@chakra-ui/react';
+import { Link, useLocation } from 'react-router-dom';
+import {
+  Box,
+  Flex,
+  Spacer,
+  useBreakpointValue,
+  Link as ChakraLink,
+  Icon,
+} from '@chakra-ui/react';
 import { AiOutlineHome, AiOutlineDashboard } from 'react-icons/ai';
 import SearchBar from '../components/searchbar';
-import CreatePostButton from '../components/createPostButton';
 import NewPost from './newPost';
 
 function NavBar() {
   const isMobile = useBreakpointValue({ base: true, md: false });
+  const location = useLocation();
+
+  const isActive = (pathname) => {
+    return location.pathname === pathname;
+  };
 
   return (
     <Box
@@ -24,18 +35,24 @@ function NavBar() {
         <Box
           bg="white"
           mx={2}
-          p={1}
+          p={isMobile ? 3 : 3} // Increase the padding value
           borderRadius="xl"
           border="3px solid black"
           width={isMobile ? '25%' : 'auto'}
           display="flex"
           alignItems="center"
-          justifyContent={isMobile ? 'center' : 'flex-start'}
+          justifyContent="center"
         >
           {isMobile ? (
-            <Icon as={AiOutlineHome} boxSize={4} />
+            <Link to="/" style={{ color: isActive('/') ? 'purple.600' : 'black' }}>
+              <Icon as={AiOutlineHome} boxSize={5} />
+            </Link>
           ) : (
-            <ChakraLink as={Link} to="/" color="black">
+            <ChakraLink
+              as={Link}
+              to="/"
+              color={isActive('/') ? 'purple.600' : 'black'}
+            >
               Homepage
             </ChakraLink>
           )}
@@ -43,23 +60,32 @@ function NavBar() {
         <Box
           bg="white"
           mx={2}
-          p={1}
+          p={isMobile ? 3 : 3} // Increase the padding value
           borderRadius="xl"
           border="3px solid black"
           width={isMobile ? '25%' : 'auto'}
           display="flex"
           alignItems="center"
-          justifyContent={isMobile ? 'center' : 'flex-start'}
+          justifyContent="center"
         >
           {isMobile ? (
-            <Icon as={AiOutlineDashboard} boxSize={4} />
+            <Link
+              to="/dashboard"
+              style={{ color: isActive('/dashboard') ? 'purple.600' : 'black' }}
+            >
+              <Icon as={AiOutlineDashboard} boxSize={5} />
+            </Link>
           ) : (
-            <ChakraLink as={Link} to="/dashboard" color="black">
+            <ChakraLink
+              as={Link}
+              to="/dashboard"
+              color={isActive('/dashboard') ? 'purple.600' : 'black'}
+            >
               Dashboard
             </ChakraLink>
           )}
         </Box>
-        <Spacer />
+        {!isMobile && <Spacer />}
         <Box
           bg="white"
           mx={2}
@@ -69,7 +95,7 @@ function NavBar() {
           width={isMobile ? '25%' : 'auto'}
           display="flex"
           alignItems="center"
-          justifyContent={isMobile ? 'center' : 'flex-start'}
+          justifyContent="center"
         >
           <NewPost />
         </Box>
@@ -82,7 +108,7 @@ function NavBar() {
           width={isMobile ? '25%' : 'auto'}
           display="flex"
           alignItems="center"
-          justifyContent={isMobile ? 'center' : 'flex-start'}
+          justifyContent="center"
         >
           <SearchBar />
         </Box>
@@ -92,6 +118,13 @@ function NavBar() {
 }
 
 export default NavBar;
+
+
+
+
+
+
+
 
 
 
