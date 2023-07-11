@@ -1,6 +1,5 @@
 const { Schema, model } = require('mongoose');
 const dateFormat = require('../utils/dateFormat');
-const tagSchema = require('./tags')
 const postSchema = new Schema(
 	{
 		postTitle: {
@@ -40,8 +39,7 @@ const postSchema = new Schema(
 				default: Date.now,
 				get: (timestamp) => dateFormat(timestamp),
 			}
-		}],
-		tags: [tagSchema]
+		}]
 	},
 	{
 		toJSON: {

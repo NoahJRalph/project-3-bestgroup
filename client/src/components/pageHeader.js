@@ -28,13 +28,13 @@ function PageHeader() {
         <Box
           bg="white"
           p={2}
-          border="7px solid black"
+          border="3px solid black"
           borderRadius="xl"
           fontSize={{ base: 'md', sm: 'lg' }}
         >
           <Flex alignItems="center" justify="center">
             <Image
-              boxSize="40px"
+              boxSize="30px"
               objectFit="cover"
               maxW={{ base: '100%', sm: '180px' }}
               src={Brain}
@@ -58,7 +58,7 @@ function PageHeader() {
               mx={4}
               p={2}
               borderRadius="xl"
-              border="7px solid black"
+              border="3px solid black"
             >
               <Logout />
             </Box>
