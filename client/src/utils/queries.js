@@ -16,7 +16,7 @@ export const GET_ALL_POSTS = gql`
 `;
 
 export const QUERY_SINGLE_POST = gql`
-  query getSingleThought($postId: ID!) {
+  query getSinglePost($postId: ID!) {
     post(postId: $postId) {
       _id
       postTitle
