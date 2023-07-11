@@ -15,7 +15,6 @@ const typeDefs = gql`
         postAuthor: String
         createdAt: String
         comments: [Comment]!
-        tags: [Tag]!
     }
 
     type Comment{
@@ -23,11 +22,6 @@ const typeDefs = gql`
         commentText: String
         commentAuthor: String
         createdAt: String
-    }
-
-    type Tag{
-        _id: ID
-        tagName: String
     }
 
     type Auth {
