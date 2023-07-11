@@ -67,7 +67,7 @@ const NewPost = () => {
         onClick={onOpen}
         variant="ghost"
         color="black"
-        leftIcon={isMobile ? <RiAddLine /> : null}
+        leftIcon={isMobile ? <RiAddLine boxSize={6} /> : null} // Increase boxSize for mobile
         justifyContent={isMobile ? 'center' : 'flex-start'}
         textAlign={isMobile ? 'center' : 'left'}
         width={isMobile ? '100%' : undefined}
@@ -115,4 +115,5 @@ const NewPost = () => {
 };
 
 export default NewPost;
+
 
