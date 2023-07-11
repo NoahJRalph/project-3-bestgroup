@@ -46,22 +46,6 @@ export const ADD_POST = gql`
 `;
 
 
-//mutation for getting all posts
-export const GET_ALL_POSTS = gql`
-  query GetAllPosts {
-    allPosts {
-      _id
-      postText
-      postAuthor
-      createdAt
-      comments {
-        _id
-        commentText
-      }
-    }
-  }
-`;
-
 //mutation for adding comments to posts
 export const ADD_COMMENT = gql`
   mutation addComment($postId: ID!, $commentText: String!) {
