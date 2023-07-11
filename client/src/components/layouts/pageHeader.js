@@ -61,7 +61,7 @@ function PageHeader() {
             Brainsync
           </Heading>
           <Text ml={2} color="gray.500" fontSize={{ base: 'sm', sm: 'md' }}>
-            {currentPage}
+            {currentUser.username}
           </Text>
         </Flex>
       </Box>
@@ -72,7 +72,7 @@ function PageHeader() {
             <Popover placement="bottom-end">
               <PopoverTrigger>
                 <Box pr={2}> {/* Add padding-right */}
-                  <Avatar name={currentUser.name} src={currentUser.avatar} size="md" cursor="pointer" />
+                  <Avatar name={currentUser.username} src={currentUser.avatar} size="md" cursor="pointer" />
                 </Box>
               </PopoverTrigger>
               <PopoverContent>

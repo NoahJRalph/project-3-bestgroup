@@ -2,7 +2,7 @@ import { ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 
 const httpLink = createHttpLink({
-	uri: 'https://b3brainsync-889e34d0cc3f.herokuapp.com/graphql',
+	uri: '/graphql',
 });
 
 const authLink = setContext((_, { headers }) => {
