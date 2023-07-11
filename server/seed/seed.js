@@ -25,18 +25,17 @@ const seedDatabase = async () => {
 		console.log('Poster username:', postData.map((post) => post.postAuthor));
 
 		// Seed posts and associate them with users
-		const posts = await Post.insertMany(
-			postData.map((post) => ({
-				...post,
-				author: users.find((user) => user.username === post.postAuthor)._id,
-			}))
-		);
-
-		// Map post titles to their IDs for easy reference
-		const postTitleToIdMap = {};
-		posts.forEach((post) => {
-			postTitleToIdMap[post.postTitle] = post._id;
-		});
+		for (let i = 0; i < postData.length; i++) {
+			const { _id, postAuthor } = await Post.create(postData[i]);
+			const user = await User.findOneAndUpdate(
+				{ username: postAuthor },
+				{
+					$addToSet: {
+						posts: _id,
+					},
+				}
+			);
+		}
 
 		console.log('Database seeded!');
 		process.exit(0);
