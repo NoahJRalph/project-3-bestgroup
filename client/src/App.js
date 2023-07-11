@@ -6,7 +6,7 @@ import { ChakraProvider, Container, Box } from '@chakra-ui/react';
 import Homepage from './pages/homepage';
 import Dashboard from './pages/Dashboard';
 import NavBar from './components/navbar';
-import theme from './theme'; // Import the custom theme
+import theme from './theme';
 
 
 
@@ -16,23 +16,23 @@ function App() {
     <ApolloProvider client={client}>
       <ChakraProvider theme={theme}>
         <Router>
-          <Box
-            bg="black"
-            p="2"
-            minH="100vh"
-            display="flex"
-            justifyContent="center"
-            alignItems="center"
+        <Box
+          bg="black"
+          p="2"
+          minH="100vh"
+          display="flex"
+          justifyContent="center"
+          alignItems="center"
+        >
+          <Container
+            bg="purple.300"
+            maxW={{ base: '95%', md: '1400px', lg: '90vw', xl: '80vw' }}
+            width="100%"
+            p={[6, 2]}
+            borderRadius="md"
+            boxShadow="lg"
+            overflow="hidden"
           >
-            <Container
-              bg="purple.300"
-              maxW={{ base: '95%', md: '1400px' }}
-              width="100%"
-              p={[6, 2]}
-              borderRadius="md"
-              boxShadow="lg"
-              overflow="hidden"
-            >
               <NavBar />
               <Routes>
                 <Route path="/" element={<Homepage />} />
