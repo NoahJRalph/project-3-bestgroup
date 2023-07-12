@@ -119,8 +119,7 @@ const NewPost = () => {
         </>
       ) : (
         <p>
-          You need to be logged in to share your thoughts. Please{' '}
-          <Link to="/homepage">login</Link>
+          <Link to="/homepage">Please login</Link>
         </p>
       )}
     </Box>
