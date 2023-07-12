@@ -1,6 +1,7 @@
 import React from 'react';
 import { Container, Box, Heading, Text, Image, Stack, Center, VStack } from '@chakra-ui/react';
 import Brain from '../assets/brain.png';
+import HomepageDemo from '../assets/homepageDemo.gif';
 import SignInModal from '../components/newUser/accountCreation';
 import LoginModal from '../components/loginOut/login';
 
@@ -21,6 +22,16 @@ function Homepage() {
             />
             <Text>Meld your mind with others</Text>
           </VStack>
+        </Center>
+        <Center>
+          <Image
+            src={HomepageDemo}
+            alt='demonstration gif of brainsync posts'
+            position='absolute'
+            top='50%'
+            left='50%'
+            transform="translate(-50%, -50%)"
+          />
         </Center>
         <Stack
           direction="column"
