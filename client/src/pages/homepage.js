@@ -7,7 +7,7 @@ import LoginModal from '../components/loginOut/login';
 
 function Homepage() {
   return (
-    <Container maxW="50%">
+    <Container maxW="70%">
       <Box position="relative" minHeight="80vh">
         <Center bg="black" py={2} boxShadow="0 0 7px 3px white" borderRadius="xl">
           <VStack spacing={4} color="white" textAlign="center">

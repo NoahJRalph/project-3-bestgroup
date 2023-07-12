@@ -34,7 +34,7 @@ function PostCard() {
         <Flex justify="space-between" align="center">
           <Flex gap="2" alignItems="center">
             <Box>
-              <Heading size="sm">username</Heading>
+              <Heading size="md" fontWeight="bold">Username</Heading>
               <Text >timestamp</Text>
             </Box>
           </Flex>
@@ -64,7 +64,7 @@ function PostCard() {
         </Flex>
       </CardHeader>
       <CardBody py={1}>
-        <Heading fontSize="md">Post Title</Heading>
+        <Heading  style={{ fontSize: '7xl' }} fontWeight="bold">Post Title</Heading>
         <Text mt={2} mb={14}>
           (postBody text goes here)
         </Text>
@@ -102,4 +102,3 @@ function PostCard() {
 }
 
 export default PostCard;
-
