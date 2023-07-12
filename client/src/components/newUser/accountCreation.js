@@ -53,16 +53,19 @@ function CreateUserModal() {
 		    const handleUsernameChange = (e) => {
 		      let inputValue = e.target.value;
 		      setUsername(inputValue);
+			  console.log('Username', inputValue);
 		    };
 		  
 		    const handleEmailChange = (e) => {
 		      let inputValue = e.target.value;
 		      setEmail(inputValue);
+			  console.log('Email', inputValue);
 		    };
 		  
 		    const handlePasswordChange = (e) => {
 		      let inputValue = e.target.value;
 		      setPassword(inputValue);
+			  console.log('Password', inputValue);
 			};
 			
 	
@@ -79,7 +82,7 @@ function CreateUserModal() {
 					<ModalHeader>Account Creation</ModalHeader>
 					<ModalCloseButton />
 					<ModalBody>
-					<form onSubmit={[handleFormSubmit, console.log(data)]}>
+					<form onSubmit={handleFormSubmit}>
      					 <Stack spacing={4}>
        					 <InputGroup>
   					        <InputLeftElement pointerEvents='none'>
