@@ -8,7 +8,7 @@ function Homepage() {
 	return (
 		<Container maxW="100%">
 			<Box position="relative" minHeight="80vh">
-				<Center bg="black" py={4} boxShadow="0 0 7px 3px white" borderRadius="xl">
+				<Center bg="black" py={2} boxShadow="0 0 7px 3px white" borderRadius="xl">
 					<VStack spacing={4} color="white" textAlign="center">
 						<Heading>Brainsync</Heading>
 						<Image

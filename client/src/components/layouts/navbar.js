@@ -22,7 +22,7 @@ function NavBar() {
 
   return (
     <Box
-      bg="purple.300"
+      bgGradient="linear-gradient(to bottom, purple.300, purple.500)" // Specify your gradient colors here
       border="3px solid black"
       py={1}
       position="fixed"
@@ -33,9 +33,9 @@ function NavBar() {
     >
       <Flex alignItems="center">
         <Box
-          bg="white"
+          bgGradient="linear-gradient(to bottom, white, gray.400)"
           mx={2}
-          p={isMobile ? 3 : 3} // Increase the padding value
+          p={isMobile ? 3 : 3}
           borderRadius="xl"
           border="3px solid black"
           width={isMobile ? '25%' : 'auto'}
@@ -58,9 +58,9 @@ function NavBar() {
           )}
         </Box>
         <Box
-          bg="white"
+          bgGradient="linear-gradient(to bottom, white, gray.400)"
           mx={2}
-          p={isMobile ? 3 : 3} // Increase the padding value
+          p={isMobile ? 3 : 3}
           borderRadius="xl"
           border="3px solid black"
           width={isMobile ? '25%' : 'auto'}
@@ -87,7 +87,7 @@ function NavBar() {
         </Box>
         {!isMobile && <Spacer />}
         <Box
-          bg="white"
+          bgGradient="linear-gradient(to bottom, white, gray.400)"
           mx={2}
           p={1}
           borderRadius="xl"
@@ -100,7 +100,7 @@ function NavBar() {
           <NewPost />
         </Box>
         <Box
-          bg="white"
+          bgGradient="linear-gradient(to bottom, white, gray.400)"
           mx={2}
           p={1}
           borderRadius="xl"
