@@ -3,6 +3,7 @@ import { Container, Box, Flex } from '@chakra-ui/react';
 // import CardGrid from '../components/postRelated/cardGrid';
 import PageHeader from '../components/layouts/pageHeader';
 import UserProfile from '../components/user/userProfile';
+import CardGrid from '../components/postRelated/cardGrid';
 
 function Dashboard() {
   return (
@@ -10,10 +11,10 @@ function Dashboard() {
       <Box>
         <PageHeader />
         <Box mt={16} mb={16}>
-          {/* <Flex justify="center">
+           <Flex justify="center">
             <CardGrid />
-          </Flex> */}
-          <UserProfile />
+          </Flex> 
+           <UserProfile />
         </Box>
       </Box>
     </Container>
