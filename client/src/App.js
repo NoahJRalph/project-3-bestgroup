@@ -7,6 +7,7 @@ import Homepage from './pages/homepage';
 import Dashboard from './pages/Dashboard';
 import NavBar from './components/layouts/navbar';
 import theme from './theme';
+import './fonts.css';
 
 const httpLink = createHttpLink({
   uri: 'https://bestgroup-brainsync-52f09c273629.herokuapp.com/graphql',
@@ -28,9 +29,11 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
+
+
+
 function App() {
   return (
-
     <ApolloProvider client={client}>
       <ChakraProvider theme={theme}>
         <Router>
@@ -66,15 +69,6 @@ function App() {
 }
 
 export default App;
-
-
-
-
-
-
-
-
-
 
 
 
