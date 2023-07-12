@@ -1,6 +1,6 @@
 import React from 'react';
-import { ApolloProvider } from '@apollo/client';
-import client from './utils/apolloClient';
+import { ApolloClient, InMemoryCache, createHttpLink, ApolloProvider } from '@apollo/client';
+import { setContext } from '@apollo/client/link/context';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { ChakraProvider, Container, Box } from '@chakra-ui/react';
 import Homepage from './pages/homepage';
@@ -8,6 +8,29 @@ import Dashboard from './pages/Dashboard';
 import NavBar from './components/layouts/navbar';
 import theme from './theme';
 import './fonts.css';
+
+const httpLink = createHttpLink({
+  uri: 'https://bestgroup-brainsync-52f09c273629.herokuapp.com/graphql',
+});
+
+const authLink = setContext((_, { headers }) => {
+  const token = localStorage.getItem('id_token');
+  console.log({ token })
+  return {
+    headers: {
+      ...headers,
+      authorization: token ? `Bearer ${token}` : '',
+    },
+  };
+});
+
+const client = new ApolloClient({
+  link: authLink.concat(httpLink),
+  cache: new InMemoryCache(),
+});
+
+
+
 
 function App() {
   return (
