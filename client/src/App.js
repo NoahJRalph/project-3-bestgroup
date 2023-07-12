@@ -38,7 +38,7 @@ function App() {
       <ChakraProvider theme={theme}>
         <Router>
           <Box
-            bg="black"
+            bg="#1E1E1E"
             p="2"
             minH="100vh"
             display="flex"
