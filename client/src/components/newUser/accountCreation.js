@@ -88,21 +88,21 @@ function CreateUserModal() {
   					        <InputLeftElement pointerEvents='none'>
   					          <FaUserAlt color='gray.300' size={16} />
   					        </InputLeftElement>
-  					        <Input type='text' placeholder='Username' onChange={handleUsernameChange}/>
+  					        <Input type='text' placeholder='Username' onChange={(e) => setUsername(e.target.value)}/>
   					      </InputGroup>
 
   					      <InputGroup>
   					        <InputLeftElement pointerEvents='none'>
   					          <EmailIcon color='black' />
   					        </InputLeftElement>
-  					        <Input type='email' placeholder='Email' onChange={handleEmailChange}/>
+  					        <Input type='email' placeholder='Email' onChange={(e) => setEmail(e.target.value)}/>
   					      </InputGroup>
 
   					      <InputGroup>
   					        <InputLeftElement pointerEvents='none'>
   					          <LockIcon color='black' />
   					        </InputLeftElement>
-  					        <Input type='password' placeholder='Password' onChange={handlePasswordChange} />
+  					        <Input type='password' placeholder='Password' onChange={(e) => setPassword(e.target.value)} />
   					      </InputGroup>
   					    </Stack>
    					 </form>
