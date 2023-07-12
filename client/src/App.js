@@ -25,7 +25,8 @@ function App() {
             alignItems="center"
           >
             <Container
-              bg="purple.300"
+              bg="transparent"
+              bgGradient="radial-gradient(circle, purple.300 0%, purple.800 100%)"
               maxW={{ base: '95%', md: '1400px', lg: '90vw', xl: '80vw' }}
               width="100%"
               p={[6, 2]}

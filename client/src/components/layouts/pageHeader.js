@@ -29,7 +29,7 @@ function PageHeader() {
 
   return (
     <Flex
-      bg="purple.300"
+      bgGradient="linear-gradient(to bottom, purple.300, purple.500)" // Specify your gradient colors here
       py={1}
       position="fixed"
       top={0}
@@ -41,7 +41,7 @@ function PageHeader() {
     >
       <Spacer />
       <Box
-        bg="white"
+        bgGradient="linear-gradient(to bottom, white, gray.400)"
         px={2}
         p={2}
         border="3px solid black"
