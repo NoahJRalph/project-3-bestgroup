@@ -24,15 +24,15 @@ function Homepage() {
           </VStack>
         </Center>
         <Center>
-					<Image
-						src={HomepageDemo}
-						alt='demonstration gif of brainsync posts'
-						position='absolute'
-						top='50%'
-						left='50%'
-						transform="translate(-50%, -50%)"
-					/>
-				</Center>
+          <Image
+            src={HomepageDemo}
+            alt='demonstration gif of brainsync posts'
+            position='absolute'
+            top='50%'
+            left='50%'
+            transform="translate(-50%, -50%)"
+          />
+        </Center>
         <Stack
           direction="column"
           spacing={4}
