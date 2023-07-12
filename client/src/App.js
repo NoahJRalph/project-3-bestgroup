@@ -7,12 +7,10 @@ import Homepage from './pages/homepage';
 import Dashboard from './pages/Dashboard';
 import NavBar from './components/layouts/navbar';
 import theme from './theme';
-
-
+import './fonts.css';
 
 function App() {
   return (
-
     <ApolloProvider client={client}>
       <ChakraProvider theme={theme}>
         <Router>
@@ -48,15 +46,6 @@ function App() {
 }
 
 export default App;
-
-
-
-
-
-
-
-
-
 
 
 

@@ -1,5 +1,4 @@
 @font-face {
-    font-family: 'Adega Serif';
-    src: url('../fonts/adega-serif.ttf') format('truetype');
-  }
-  
+  font-family: 'Adega Serif';
+  src: url('./fonts/ADegaSerifBold.otf') format('opentype');
+}
