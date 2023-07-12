@@ -1,17 +1,19 @@
 import React from 'react';
-import { Container, Box, Text } from '@chakra-ui/react';
-import CardGrid from '../components/cardGrid';
-import PageHeader from '../components/pageHeader';
+import { Container, Box, Flex } from '@chakra-ui/react';
+// import CardGrid from '../components/postRelated/cardGrid';
+import PageHeader from '../components/layouts/pageHeader';
+import UserProfile from '../components/user/userProfile';
 
 function Dashboard() {
   return (
     <Container>
       <Box>
         <PageHeader />
-        <Box mt={20}>
-          <CardGrid />
-          <Text>Is the homepage the landing page?</Text>
-
+        <Box mt={16} mb={16}>
+          {/* <Flex justify="center">
+            <CardGrid />
+          </Flex> */}
+          <UserProfile />
         </Box>
       </Box>
     </Container>
@@ -19,6 +21,7 @@ function Dashboard() {
 }
 
 export default Dashboard;
+
 
 
 

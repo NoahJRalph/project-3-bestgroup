@@ -1,14 +1,14 @@
 import React from 'react';
 import { Container, Box, Heading, Text, Image, Stack, Center, VStack, } from '@chakra-ui/react';
 import Brain from '../assets/brain.png';
-import SignInModal from '../components/accountCreation';
-import LoginModal from '../components/login';
+import SignInModal from '../components/newUser/accountCreation';
+import LoginModal from '../components/loginOut/login';
 
 function Homepage() {
 	return (
 		<Container maxW="100%">
 			<Box position="relative" minHeight="80vh">
-				<Center bg="black" py={4} boxShadow="0 0 7px 3px white" borderRadius="xl">
+				<Center bg="black" py={2} boxShadow="0 0 7px 3px white" borderRadius="xl">
 					<VStack spacing={4} color="white" textAlign="center">
 						<Heading>Brainsync</Heading>
 						<Image
