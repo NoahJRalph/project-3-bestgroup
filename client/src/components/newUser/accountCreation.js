@@ -78,7 +78,7 @@ function CreateUserModal() {
 					<ModalHeader>Account Creation</ModalHeader>
 					<ModalCloseButton />
 					<ModalBody>
-					<form onSubmit={handleFormSubmit}>
+					<form onSubmit={[handleFormSubmit, console.log(data)]}>
      					 <Stack spacing={4}>
        					 <InputGroup>
   					        <InputLeftElement pointerEvents='none'>
