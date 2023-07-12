@@ -35,7 +35,7 @@ function PostCard() {
           <Flex gap="2" alignItems="center">
             <Box>
               <Heading size="sm">username</Heading>
-              <Text>timestamp</Text>
+              <Text >timestamp</Text>
             </Box>
           </Flex>
           <Popover>

@@ -1,5 +1,17 @@
+@font-face {
+  font-family: 'Adega Serif';
+  src: url('../fonts/ADegaSerifBold.otf') format('opentype');
+}
+
 .App {
   text-align: center;
+  font-family: 'Adega Serif', sans-serif;
+}
+
+.chakra-heading,
+.chakra-text,
+.chakra-button {
+  font-family: 'Adega Serif', sans-serif !important;
 }
 
 .App-logo {
