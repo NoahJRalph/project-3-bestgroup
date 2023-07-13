@@ -11,6 +11,7 @@ import {
 import { AiOutlineHome, AiOutlineDashboard } from 'react-icons/ai';
 import SearchBar from './searchbar';
 import NewPost from '../postRelated/newPost';
+import UserProfile from '../user/userProfile';
 
 function NavBar() {
   const isMobile = useBreakpointValue({ base: true, md: false });
@@ -85,6 +86,36 @@ function NavBar() {
             </ChakraLink>
           )}
         </Box>
+        <Box
+          bgGradient="linear-gradient(to bottom, white, gray.400)"
+          mx={2}
+          p={isMobile ? 3 : 3}
+          borderRadius="xl"
+          border="3px solid black"
+          width={isMobile ? '25%' : 'auto'}
+          display="flex"
+          alignItems="center"
+          justifyContent="center"
+        >
+          {isMobile ? (
+            <Link
+              to="/userProfile/:username"
+              style={{ color: isActive('//userProfile/:username') ? 'purple.600' : 'black' }}
+            >
+              <Icon as={AiOutlineDashboard} boxSize={5} />
+            </Link>
+          ) : (
+            <ChakraLink
+              as={Link}
+              to="/userProfile/:username"
+              color={isActive('/userProfile/:username') ? 'purple.600' : 'black'}
+            >
+              UserProfile
+            </ChakraLink>
+          )}
+        </Box>
+
+
         {!isMobile && <Spacer />}
         <Box
           bgGradient="linear-gradient(to bottom, white, gray.400)"

@@ -13,7 +13,7 @@ function Dashboard() {
           <Flex justify="center">
             <CardGrid />
           </Flex>
-          {/* <UserProfile /> */}
+
         </Box>
       </Box>
     </Container>
