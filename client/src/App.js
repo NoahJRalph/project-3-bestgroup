@@ -10,12 +10,13 @@ import theme from './theme';
 import './fonts.css';
 
 const httpLink = createHttpLink({
-  uri: 'https://bestgroup-brainsync-52f09c273629.herokuapp.com/graphql',
+  //uri: 'https://bestgroup-brainsync-52f09c273629.herokuapp.com/graphql',
+  uri: 'http://localhost:3001/graphql',
 });
 
 const authLink = setContext((_, { headers }) => {
   const token = localStorage.getItem('id_token');
-  console.log({ token })
+  //console.log({ token })
   return {
     headers: {
       ...headers,

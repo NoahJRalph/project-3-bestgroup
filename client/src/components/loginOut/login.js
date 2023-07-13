@@ -26,7 +26,6 @@ function LoginModal() {
   // update state based on form input changes
   const handleChange = async (event) => {
     const { name, value } = event.target
-    console.log('change happened')
     setFormState({
       ...formState,
       [name]: value,
@@ -36,13 +35,14 @@ function LoginModal() {
   // submit form
   const handleFormSubmit = async (event) => {
     event.preventDefault()
-    console.log('hi')
+    //console.log('hi')
     try {
+      //console.log(formState);
       const { data } = await login({
         variables: { ...formState },
-      })
-      console.log({ data })
-      Auth.login(data.login.token)
+      });
+      //console.log(data.login.user);
+      Auth.login(data.login.token);
     } catch (e) {
       console.error(e)
     }
@@ -52,8 +52,8 @@ function LoginModal() {
       email: '',
       password: '',
     })
-    onClose()
-    navigate('/dashboard')
+    onClose();
+    navigate('/dashboard');
   }
 
 

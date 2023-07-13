@@ -29,7 +29,7 @@ function CreateUserModal() {
 		    let [username, setUsername] = useState('');
 		    let [email, setEmail] = useState('');
 		    let [password, setPassword] = useState('');
-		    const [addUser, { error }] = useMutation(ADD_NEW_USER);
+		    const [addUser, { error, data }] = useMutation(ADD_NEW_USER);
 	
 		    const handleFormSubmit = async (event) => {
 		      event.preventDefault();
