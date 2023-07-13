@@ -7,7 +7,7 @@ import Homepage from './pages/homepage';
 import Dashboard from './pages/Dashboard';
 import SinglePost from './components/singlePost/singlePost';
 import UserProfile from './components/user/userProfile'
-import NavBar from './components/layouts/navbar';
+// import NavBar from './components/layouts/navbar';
 import theme from './theme';
 import './fonts.css';
 import Brain2 from './assets/brain2.png';
@@ -72,7 +72,7 @@ function App() {
                 top={0}
                 left={0}
               />
-              <NavBar />
+
               <Routes>
                 <Route path="/" element={<Homepage />} />
                 <Route path="/dashboard" element={<Dashboard />} />

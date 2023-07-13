@@ -1,6 +1,7 @@
 import React from 'react';
 import { Divider, Box, Flex, Card, Stack, Text, VStack } from '@chakra-ui/react';
 import PageHeader from '../layouts/pageHeader';
+import NavBar from '../layouts/navbar';
 import SinglePostCard from './singlePostCard'
 import { useQuery } from '@apollo/client';
 import { useParams } from 'react-router-dom';
@@ -39,6 +40,7 @@ function SinglePost() {
 					</VStack>
 				</Flex>
 			</Box>
+			<NavBar />
 		</Box>
 	);
 }

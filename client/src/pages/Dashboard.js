@@ -1,6 +1,7 @@
 import React from 'react';
 import { Container, Box, Flex } from '@chakra-ui/react';
 import PageHeader from '../components/layouts/pageHeader';
+import NavBar from '../components/layouts/navbar'
 // import UserProfile from '../components/user/userProfile';
 import CardGrid from '../components/postRelated/cardGrid';
 
@@ -13,8 +14,8 @@ function Dashboard() {
           <Flex justify="center">
             <CardGrid />
           </Flex>
-
         </Box>
+        <NavBar />
       </Box>
     </Container>
   );
