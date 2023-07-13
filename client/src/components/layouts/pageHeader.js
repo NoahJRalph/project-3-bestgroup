@@ -15,21 +15,22 @@ import {
   PopoverCloseButton,
   useMediaQuery,
 } from '@chakra-ui/react';
-import { useQuery } from '@apollo/client';
-import { QUERY_ME } from '../../utils/queries';
 import Brain from '../../assets/brain.png';
-import Logout from '../loginOut/logout';
+import Auth from '../../utils/auth';
 
 function PageHeader() {
-  const currentUser = useQuery(QUERY_ME);
-  console.log({ currentUser });
+  const logout = (event) => {
+    event.preventDefault();
+    Auth.logout();
+  }
   const currentPage = 'Dashboard'; // Placeholder for the current page
+
 
   const [isLargerThanMobile] = useMediaQuery('(min-width: 480px)');
 
   return (
     <Flex
-      bgGradient="linear-gradient(to bottom, purple.300, purple.500)" // Specify your gradient colors here
+      bgGradient="linear-gradient(to bottom, purple.300, purple.500)"
       py={1}
       position="fixed"
       top={0}
@@ -57,49 +58,57 @@ function PageHeader() {
             alt="rendering of a human brain"
             borderRadius="lg"
           />
-          <Heading ml={2} color="black" fontSize={{ base: 'md', sm: 'lg' }}>
+          <Heading ml={2} color="black" fontSize={{ base: 'md', sm: 'lg', md: 'xl' }}>
             Brainsync
           </Heading>
-          <Text ml={2} color="gray.500" fontSize={{ base: 'sm', sm: 'md' }}>
-            {currentUser.username}
+          {Auth.loggedIn() ? (
+            <Text ml={2} color="gray.500" fontSize={{ base: 'sm', sm: 'md' }}>
+            {Auth.getProfile().data.username}
           </Text>
+          ):('')}
         </Flex>
       </Box>
       <Spacer />
+      {Auth.loggedIn() ? (
       <Flex align="center" position="relative">
         <Box position="absolute" right="0" pr={2}>
+
           {isLargerThanMobile ? (
             <Popover placement="bottom-end">
               <PopoverTrigger>
 
                 <Box pr={2}> {/* Add padding-right */}
-                  <Avatar name={currentUser.username} src={currentUser.avatar} size="md" cursor="pointer" />
+                  <Avatar name={Auth.getProfile().data.username} src={Auth.getProfile().data.avatar} size="md" cursor="pointer" />
                 </Box>
               </PopoverTrigger>
               <PopoverContent>
                 <PopoverArrow />
                 <PopoverCloseButton />
                 <PopoverBody>
-                  <Logout />
+                <button className='logout-button' onClick={logout}>
+                  Logout
+                </button>
                 </PopoverBody>
               </PopoverContent>
             </Popover>
           ) : (
             <Popover placement="bottom-end">
               <PopoverTrigger>
-                <Avatar name={currentUser.name} src={currentUser.avatar} size="md" cursor="pointer" />
+                <Avatar name={Auth.getProfile().data.username} src={Auth.getProfile().data.avatar} size="md" cursor="pointer" />
               </PopoverTrigger>
               <PopoverContent>
                 <PopoverArrow />
                 <PopoverCloseButton />
                 <PopoverBody>
-                  <Logout />
+                <button className='logout-button' onClick={logout}>
+                  Logout
+                </button>
                 </PopoverBody>
               </PopoverContent>
             </Popover>
           )}
         </Box>
-      </Flex>
+      </Flex>):('')}
     </Flex>
   );
 }

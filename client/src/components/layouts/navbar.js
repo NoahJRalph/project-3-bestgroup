@@ -22,7 +22,7 @@ function NavBar() {
 
   return (
     <Box
-      bgGradient="linear-gradient(to bottom, purple.300, purple.500)" // Specify your gradient colors here
+      bgGradient="linear-gradient(to bottom, purple.300, purple.500)"
       border="3px solid black"
       py={1}
       position="fixed"
