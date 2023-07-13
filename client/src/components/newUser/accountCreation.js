@@ -24,7 +24,7 @@ import { ADD_NEW_USER } from '../../utils/mutations'
 
 
 function CreateUserModal() {
-	const { isOpen, data,  onOpen, onClose } = useDisclosure()
+	const { isOpen, data, onOpen, onClose } = useDisclosure()
 	
 		    let [username, setUsername] = useState('');
 		    let [email, setEmail] = useState('');
@@ -119,4 +119,4 @@ function CreateUserModal() {
 		</>
 	)
 }
-export default CreateUserModal
+export default CreateUserModal;
