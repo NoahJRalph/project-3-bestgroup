@@ -8,6 +8,7 @@ import Dashboard from './pages/Dashboard';
 import NavBar from './components/layouts/navbar';
 import theme from './theme';
 import './fonts.css';
+import Brain2 from './assets/brain2.png';
 
 const httpLink = createHttpLink({
   //uri: 'https://bestgroup-brainsync-52f09c273629.herokuapp.com/graphql',
@@ -43,19 +44,32 @@ function App() {
             p="2"
             minH="100vh"
             display="flex"
-            justifyContent="center"
+            justifyContent="cennpm run buildter"
             alignItems="center"
           >
-            <Container
-              bg="transparent"
-              bgGradient="radial-gradient(circle, purple.300 0%, purple.800 100%)"
-              maxW={{ base: '95%', md: '1400px', lg: '90vw', xl: '80vw' }}
+          <Container
+            maxW={{ base: '95%', md: '1400px', lg: '90vw', xl: '80vw' }}
+            width="100%"
+            p={[6, 2]}
+            borderRadius="md"
+            boxShadow="lg"
+            overflow="hidden"
+            bgGradient="radial-gradient(circle, purple.300 0%, purple.800 100%)"
+            position="relative"
+            backgroundAttachment="fixed"
+          >
+            <Box
+              bgImage={`url(${Brain2})`}
+              bgSize="cover"
+              bgRepeat="no-repeat"
+              bgPosition="center"
               width="100%"
-              p={[6, 2]}
-              borderRadius="md"
-              boxShadow="lg"
-              overflow="hidden"
-            >
+              height="100%"
+              opacity={0.20}
+              position="absolute"
+              top={0}
+              left={0}
+            />
               <NavBar />
               <Routes>
                 <Route path="/" element={<Homepage />} />

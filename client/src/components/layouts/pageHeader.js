@@ -19,19 +19,18 @@ import Brain from '../../assets/brain.png';
 import Auth from '../../utils/auth';
 
 function PageHeader() {
-  /*const currentUser = useQuery(QUERY_ME);
-  console.log({ currentUser });*/
   const logout = (event) => {
     event.preventDefault();
     Auth.logout();
   }
   const currentPage = 'Dashboard'; // Placeholder for the current page
 
+
   const [isLargerThanMobile] = useMediaQuery('(min-width: 480px)');
 
   return (
     <Flex
-      bgGradient="linear-gradient(to bottom, purple.300, purple.500)" // Specify your gradient colors here
+      bgGradient="linear-gradient(to bottom, purple.300, purple.500)"
       py={1}
       position="fixed"
       top={0}
@@ -59,7 +58,7 @@ function PageHeader() {
             alt="rendering of a human brain"
             borderRadius="lg"
           />
-          <Heading ml={2} color="black" fontSize={{ base: 'md', sm: 'lg' }}>
+          <Heading ml={2} color="black" fontSize={{ base: 'md', sm: 'lg', md: 'xl' }}>
             Brainsync
           </Heading>
           {Auth.loggedIn() ? (
@@ -72,7 +71,7 @@ function PageHeader() {
       <Spacer />
       {Auth.loggedIn() ? (
       <Flex align="center" position="relative">
-        <Box position="absolute" right="0">
+        <Box position="absolute" right="0" pr="1rem">
           {isLargerThanMobile ? (
             <Popover placement="bottom-end">
               <PopoverTrigger>
