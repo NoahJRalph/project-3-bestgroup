@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { ChakraProvider, Container, Box } from '@chakra-ui/react';
 import Homepage from './pages/homepage';
 import Dashboard from './pages/Dashboard';
+import SinglePost from './pages/singlePost';
 import NavBar from './components/layouts/navbar';
 import theme from './theme';
 import './fonts.css';
@@ -47,33 +48,34 @@ function App() {
             justifyContent="cennpm run buildter"
             alignItems="center"
           >
-          <Container
-            maxW={{ base: '95%', md: '1400px', lg: '90vw', xl: '80vw' }}
-            width="100%"
-            p={[6, 2]}
-            borderRadius="md"
-            boxShadow="lg"
-            overflow="hidden"
-            bgGradient="radial-gradient(circle, purple.300 0%, purple.800 100%)"
-            position="relative"
-            backgroundAttachment="fixed"
-          >
-            <Box
-              bgImage={`url(${Brain2})`}
-              bgSize="cover"
-              bgRepeat="no-repeat"
-              bgPosition="center"
+            <Container
+              maxW={{ base: '95%', md: '1400px', lg: '90vw', xl: '80vw' }}
               width="100%"
-              height="100%"
-              opacity={0.20}
-              position="absolute"
-              top={0}
-              left={0}
-            />
+              p={[6, 2]}
+              borderRadius="md"
+              boxShadow="lg"
+              overflow="hidden"
+              bgGradient="radial-gradient(circle, purple.300 0%, purple.800 100%)"
+              position="relative"
+              backgroundAttachment="fixed"
+            >
+              <Box
+                bgImage={`url(${Brain2})`}
+                bgSize="cover"
+                bgRepeat="no-repeat"
+                bgPosition="center"
+                width="100%"
+                height="100%"
+                opacity={0.20}
+                position="absolute"
+                top={0}
+                left={0}
+              />
               <NavBar />
               <Routes>
                 <Route path="/" element={<Homepage />} />
                 <Route path="/dashboard" element={<Dashboard />} />
+                <Route path="/singlePost" element={<SinglePost />} />
               </Routes>
             </Container>
           </Box>

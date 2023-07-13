@@ -12,18 +12,27 @@ import {
 	Textarea,
 	useBreakpointValue,
 	Box,
+	Center
 } from '@chakra-ui/react';
 import { useMutation } from '@apollo/client';
-import { ADD_COMMENT, QUERY_SINGLE_POST } from '../../utils/queries';
+import { ADD_COMMENT } from '../../utils/mutations';
+import { QUERY_SINGLE_POST } from '../../utils/queries';
 import { RiAddLine } from 'react-icons/ri';
+
+import { useNavigate } from 'react-router-dom'
 
 const NewComment = ({ postId }) => {
 	const { isOpen, onOpen, onClose } = useDisclosure();
-	const [commentText, setCommentText] = useState('');
+	const isMobile = useBreakpointValue({ base: true, md: false });
+	const navigate = useNavigate();
+
+	const [formState, setFormState] = useState({
+		commentText: '',
+	});
 	const [addComment, { error }] = useMutation(ADD_COMMENT, {
 		refetchQueries: [{ query: QUERY_SINGLE_POST, variables: { postId } }],
 	});
-	const isMobile = useBreakpointValue({ base: true, md: false });
+
 
 	const handleFormSubmit = async (event) => {
 		event.preventDefault();
@@ -31,21 +40,28 @@ const NewComment = ({ postId }) => {
 		try {
 			await addComment({
 				variables: {
-					postId,
-					commentText,
+					...formState,
+					postId
 				},
 			});
 
-			setCommentText('');
+			setFormState({
+				commentText: '',
+			});
 			onClose();
+			navigate('/singlePost');
 		} catch (err) {
 			console.error(err);
 		}
 	};
 
-	const handleTextChange = (e) => {
-		const inputValue = e.target.value;
-		setCommentText(inputValue);
+	const handleChange = (event) => {
+		const { name, value } = event.target;
+
+		setFormState({
+			...formState,
+			[name]: value,
+		})
 	};
 
 	return (
@@ -54,7 +70,13 @@ const NewComment = ({ postId }) => {
 				onClick={onOpen}
 				variant="ghost"
 				color="black"
-				leftIcon={isMobile ? <RiAddLine boxSize={6} /> : null}
+				leftIcon={
+					isMobile ? (
+						<Center boxSize={6} >
+							<RiAddLine />
+						</Center>
+					) : null
+				}
 				justifyContent={isMobile ? 'center' : 'flex-start'}
 				textAlign={isMobile ? 'center' : 'left'}
 				width={isMobile ? '100%' : undefined}
@@ -68,8 +90,9 @@ const NewComment = ({ postId }) => {
 					<ModalCloseButton />
 					<ModalBody>
 						<Textarea
-							value={commentText}
-							onChange={handleTextChange}
+							name='commentText'
+							value={formState.commentText}
+							onChange={handleChange}
 							placeholder="Enter your comment..."
 							fontSize="sm"
 							size="sm"
