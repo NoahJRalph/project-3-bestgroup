@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Box, Heading, Text, Image, Stack, Center, VStack } from '@chakra-ui/react';
+import { Container, Box, Heading, Text, Image, Stack, Center, VStack, AspectRatio } from '@chakra-ui/react';
 import Brain from '../assets/brain.png';
 import HomepageDemo from '../assets/homepageDemo.gif';
 import SignInModal from '../components/newUser/accountCreation';
@@ -23,16 +23,21 @@ function Homepage() {
             <Text fontSize="2xl" >Meld your mind with others</Text>
           </VStack>
         </Center>
-        {/*<Center>
-          <Image
-            src={HomepageDemo}
-            alt='demonstration gif of brainsync posts'
-            position='absolute'
-            top='50%'
-            left='50%'
-            transform="translate(-50%, -50%)"
-          />
-        </Center> */}
+        <Center >
+          <Container>
+            <Image
+              src={HomepageDemo}
+              alt='demonstration gif of brainsync posts'
+              position='absolute'
+              top='55%'
+              left='50%'
+              transform="translate(-50%, -50%)"
+              width="400px"
+              height="auto"
+            />
+          </Container>
+
+        </Center>
         <Stack
           direction="column"
           spacing={4}
