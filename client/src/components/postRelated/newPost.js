@@ -14,6 +14,7 @@ import {
   Box,
   Input,
   Link,
+  Center,
 } from '@chakra-ui/react';
 import { useMutation } from '@apollo/client';
 import { ADD_POST } from '../../utils/mutations';
@@ -82,7 +83,13 @@ const NewPost = () => {
             onClick={onOpen}
             variant="ghost"
             color="black"
-            leftIcon={isMobile ? <RiAddLine boxSize={6} /> : null} // Increase boxSize for mobile
+            leftIcon={
+              isMobile ? (
+                <Center boxSize={6} >
+                  <RiAddLine />
+                </Center>
+              ) : null
+            } // Increase boxSize for mobile
             justifyContent={isMobile ? 'center' : 'flex-start'}
             textAlign={isMobile ? 'center' : 'left'}
             width={isMobile ? '100%' : undefined}
