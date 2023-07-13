@@ -23,13 +23,13 @@ import Logout from '../loginOut/logout';
 function PageHeader() {
   const currentUser = useQuery(QUERY_ME);
   console.log({ currentUser });
-  const currentPage = 'Dashboard'; // Placeholder for the current page
+  const currentPage = 'Dashboard';
 
   const [isLargerThanMobile] = useMediaQuery('(min-width: 480px)');
 
   return (
     <Flex
-      bgGradient="linear-gradient(to bottom, purple.300, purple.500)" // Specify your gradient colors here
+      bgGradient="linear-gradient(to bottom, purple.300, purple.500)"
       py={1}
       position="fixed"
       top={0}
@@ -57,7 +57,7 @@ function PageHeader() {
             alt="rendering of a human brain"
             borderRadius="lg"
           />
-          <Heading ml={2} color="black" fontSize={{ base: 'md', sm: 'lg' }}>
+          <Heading ml={2} color="black" fontSize={{ base: 'md', sm: 'lg', md: 'xl' }}>
             Brainsync
           </Heading>
           <Text ml={2} color="gray.500" fontSize={{ base: 'sm', sm: 'md' }}>
@@ -67,7 +67,7 @@ function PageHeader() {
       </Box>
       <Spacer />
       <Flex align="center" position="relative">
-        <Box position="absolute" right="0">
+        <Box position="absolute" right="0" pr="1rem">
           {isLargerThanMobile ? (
             <Popover placement="bottom-end">
               <PopoverTrigger>
