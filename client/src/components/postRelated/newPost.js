@@ -17,6 +17,7 @@ import {
 } from '@chakra-ui/react';
 import { useMutation } from '@apollo/client';
 import { ADD_POST } from '../../utils/mutations';
+import { QUERY_POSTS } from '../../utils/queries';
 import { RiAddLine } from 'react-icons/ri';
 
 import Auth from '../../utils/auth';
@@ -29,7 +30,18 @@ const NewPost = () => {
     postText: '',
   });
 
-  const [addPost, { error }] = useMutation(ADD_POST);
+  const [addPost, { error }] = useMutation(ADD_POST, {
+    update(cache, { data: { addPost } }) {
+      const data = cache.readQuery({ query: QUERY_POSTS });
+      cache.writeQuery({
+        query: QUERY_POSTS,
+        data: {
+          ...data,
+          posts: [addPost, ...data.posts],
+        },
+      });
+    },
+  });
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
@@ -54,7 +66,7 @@ const NewPost = () => {
   };
 
   const handleChange = (event) => {
-    const {name, value} = event.target;
+    const { name, value } = event.target;
 
     setFormState({
       ...formState,
