@@ -22,7 +22,7 @@ function NavBar() {
 
   return (
     <Box
-      bgGradient="linear-gradient(to bottom, purple.300, purple.500)" // Specify your gradient colors here
+      bgGradient="linear-gradient(to bottom, purple.300, purple.500)"
       border="3px solid black"
       py={1}
       position="fixed"
@@ -86,23 +86,23 @@ function NavBar() {
           )}
         </Box>
         {!isMobile && <Spacer />}
-        <Box
-          bgGradient="linear-gradient(to bottom, white, gray.400)"
-          mx={2}
-          p={1}
-          borderRadius="xl"
-          border="3px solid black"
-          width={isMobile ? '25%' : 'auto'}
-          display="flex"
-          alignItems="center"
-          justifyContent="center"
-        >
+    <Box
+      bgGradient="linear-gradient(to bottom, white, gray.400)"
+      mx={3}
+      p={1}
+      borderRadius="xl"
+      border="3px solid black"
+      width="25%"
+      display="flex"
+      alignItems="center"
+      justifyContent="center"
+    >
           <NewPost />
         </Box>
         <Box
           bgGradient="linear-gradient(to bottom, white, gray.400)"
           mx={2}
-          p={1}
+          p={2}
           borderRadius="xl"
           border="3px solid black"
           width={isMobile ? '25%' : 'auto'}

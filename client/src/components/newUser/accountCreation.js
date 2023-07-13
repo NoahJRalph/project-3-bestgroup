@@ -32,6 +32,7 @@ function CreateUserModal() {
 		password: '',
 	  });
 	  const [addUser, { error, data }] = useMutation(ADD_NEW_USER);
+
 	
 	  const handleChange = (event) => {
 		const { name, value } = event.target;
@@ -109,4 +110,4 @@ function CreateUserModal() {
 		</>
 	)
 }
-export default CreateUserModal
+export default CreateUserModal;
