@@ -22,8 +22,7 @@ import { BsThreeDotsVertical } from 'react-icons/bs';
 import { BiChat, BiShare } from 'react-icons/bi';
 import { useQuery } from '@apollo/client';
 import { QUERY_POSTS } from '../../utils/queries';
-import NewComment from '../comments/newComment'
-
+import NewComment from '../comments/newComment';
 
 const PostCard = () => {
   const isMobile = useBreakpointValue({ base: true, md: false });
@@ -39,7 +38,6 @@ const PostCard = () => {
     return <h3>Be the first to post</h3>;
   }
 
-
   return (
     posts.map(post => (
       <Box key={post._id}>
@@ -49,7 +47,6 @@ const PostCard = () => {
           p={isMobile ? 3 : 4}
           my={isMobile ? 1 : 4}
         >
-
           <CardHeader>
             <Flex justify="space-between" align="center">
               <Flex gap="2" alignItems="center">
@@ -97,7 +94,6 @@ const PostCard = () => {
               position="absolute"
               bottom={0}
               left={0}
-              borderRadius="x1"
               borderTopRadius={0}
             >
               {isMobile ? (
@@ -107,19 +103,19 @@ const PostCard = () => {
                 </Flex>
               ) : (
                 <Flex justifyContent="center" alignItems="center">
-                  <Button onClick={onOpen} flex="1" variant="ghost" leftIcon={<BiChat />} w="40%">
-                    {isMobile ? null : 'Comment'}
-                  </Button>
-                  <Button flex="1" variant="ghost" leftIcon={<BiShare />} w="40%">
-                    {isMobile ? null : 'Share'}
-                  </Button>
+                  <Box flex="1">
+                    <NewComment postId={post._id} />
+                  </Box>
+                  <Box flex="1" ml={2}>
+                    <Button variant="ghost" leftIcon={<BiShare />} w="100%">
+                      {isMobile ? null : 'Share'}
+                    </Button>
+                  </Box>
                 </Flex>
               )}
-              <NewComment isOpen={isOpen} onClose={onClose} />
             </Box>
           </CardFooter>
         </Card>
-
       </Box>
     ))
   )
