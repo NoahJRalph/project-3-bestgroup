@@ -1,8 +1,15 @@
 import React from 'react';
+import { useQuery } from '@apollo/client';
+
 import { SimpleGrid, Flex } from '@chakra-ui/react';
 import PostCard from './postCard';
 
-function CardGrid() {
+import { QUERY_POSTS } from '../../utils/queries';
+
+const CardGrid = () => {
+  const { loading, data } = useQuery(QUERY_POSTS)
+  const post = data?.post || []
+
   return (
     <Flex justify="center" align="center">
       <SimpleGrid
@@ -18,11 +25,14 @@ function CardGrid() {
           '100%', // Large screen width
         ]}
       >
-        <PostCard />
-        <PostCard />
-        <PostCard />
-        <PostCard />
-        <PostCard />
+        {loading ? (
+          <div>Loading...</div>
+        ) : (
+          <PostCard
+            posts={post}
+            title="Brains syncing..."
+          />
+        )}
       </SimpleGrid>
     </Flex>
   );

@@ -2,7 +2,7 @@ import { gql } from '@apollo/client';
 
 export const QUERY_POSTS = gql`
   query GetPosts {
-    allPosts {
+    posts {
       _id
       postTitle
       postText
