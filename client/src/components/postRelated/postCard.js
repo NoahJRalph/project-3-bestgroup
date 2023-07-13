@@ -15,17 +15,19 @@ import {
   PopoverCloseButton,
   IconButton,
   Flex,
+  useDisclosure
 } from '@chakra-ui/react';
 import { Heading, Text } from '@chakra-ui/react';
 import { BsThreeDotsVertical } from 'react-icons/bs';
 import { BiChat, BiShare } from 'react-icons/bi';
 import { useQuery } from '@apollo/client';
 import { QUERY_POSTS } from '../../utils/queries';
-
+import NewComment from '../comments/newComment'
 
 
 const PostCard = () => {
   const isMobile = useBreakpointValue({ base: true, md: false });
+  const { isOpen, onOpen, onClose } = useDisclosure();
   const { loading, error, data } = useQuery(QUERY_POSTS);
 
   if (loading) return <h3>Loading posts...</h3>;
@@ -100,12 +102,12 @@ const PostCard = () => {
             >
               {isMobile ? (
                 <Flex justifyContent="space-evenly" alignItems="center" px={4}>
-                  <IconButton variant="ghost" aria-label="Comment" icon={<BiChat />} w="40%" />
+                  <IconButton isOpen={isOpen} variant="ghost" aria-label="Comment" icon={<BiChat />} w="40%" />
                   <IconButton variant="ghost" aria-label="Share" icon={<BiShare />} w="40%" />
                 </Flex>
               ) : (
                 <Flex justifyContent="center" alignItems="center">
-                  <Button flex="1" variant="ghost" leftIcon={<BiChat />} w="40%">
+                  <Button onClick={onOpen} flex="1" variant="ghost" leftIcon={<BiChat />} w="40%">
                     {isMobile ? null : 'Comment'}
                   </Button>
                   <Button flex="1" variant="ghost" leftIcon={<BiShare />} w="40%">
@@ -113,13 +115,14 @@ const PostCard = () => {
                   </Button>
                 </Flex>
               )}
+              <NewComment isOpen={isOpen} onClose={onClose} />
             </Box>
           </CardFooter>
         </Card>
+
       </Box>
     ))
   )
-
 }
 
 export default PostCard;

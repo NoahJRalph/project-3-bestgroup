@@ -12,18 +12,19 @@ import {
 } from '@chakra-ui/react';
 import { EmailIcon, LockIcon } from '@chakra-ui/icons'
 import React, { useState } from 'react'
-import { Link, Navigate } from 'react-router-dom'
+
 import { useMutation } from '@apollo/client'
 import { LOGIN_USER } from '../../utils/mutations'
 import Auth from '../../utils/auth'
-import { useNavigate } from 'react-router-dom';
 
-function LoginModal() {
+
+const LoginModal = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const navigate = useNavigate();
+
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [formState, setFormState] = useState({ email: '', password: '' });
   const [login, { error, data }] = useMutation(LOGIN_USER);
-  // update state based on form input changes
+
   const handleChange = async (event) => {
     const { name, value } = event.target
     setFormState({
@@ -35,14 +36,17 @@ function LoginModal() {
   // submit form
   const handleFormSubmit = async (event) => {
     event.preventDefault()
-    //console.log('hi')
+
     try {
-      //console.log(formState);
+
       const { data } = await login({
         variables: { ...formState },
       });
-      //console.log(data.login.user);
+
       Auth.login(data.login.token);
+      console.log('Token set in local storage:', data.login.token);
+      setIsLoggedIn(true);
+
     } catch (e) {
       console.error(e)
     }
@@ -52,8 +56,6 @@ function LoginModal() {
       email: '',
       password: '',
     })
-    onClose();
-    navigate('/dashboard');
   }
 
 
@@ -68,11 +70,8 @@ function LoginModal() {
           <ModalCloseButton />
           <ModalBody>
 
-            {data ? (
-              <p>
-                Success! You may now head{' '}
-                <Link to="/dashboard">back to the homepage.</Link>
-              </p>
+            {isLoggedIn ? (
+              <p>you are logged in and should of bee redirected</p>
             ) : (
 
               <form onSubmit={handleFormSubmit}>
