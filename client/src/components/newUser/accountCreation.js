@@ -119,4 +119,4 @@ function CreateUserModal() {
 		</>
 	)
 }
-export default CreateUserModal
+export default CreateUserModal;
