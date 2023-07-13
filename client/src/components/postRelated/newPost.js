@@ -24,29 +24,28 @@ import Auth from '../../utils/auth';
 const NewPost = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const isMobile = useBreakpointValue({ base: true, md: false });
-
-  const [postTitle, setPostTitle] = useState('');
-  const [postText, setPostText] = useState('');
+  const [formState, setFormState] = useState({
+    postTitle: '',
+    postText: '',
+  });
 
   const [addPost, { error }] = useMutation(ADD_POST);
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    console.log('things happen')
     try {
-      const fish = Auth.getProfile().data.username
-      console.log({ postText, postTitle, fish })
       const { data } = await addPost({
         variables: {
-          postTitle,
-          postText,
+          ...formState,
           postAuthor: Auth.getProfile().data.username,
         },
 
       });
       console.log('hey ')
-      setPostTitle('');
-      setPostText('');
+      setFormState({
+        postText: '',
+        postTitle: ''
+      });
       onClose();
       // Close the modal after successful post creation
     } catch (err) {
@@ -54,14 +53,13 @@ const NewPost = () => {
     }
   };
 
-  const handleTitleChange = (e) => {
-    let inputValue = e.target.value;
-    setPostTitle(inputValue);
-  };
+  const handleChange = (event) => {
+    const {name, value} = event.target;
 
-  const handleTextChange = (e) => {
-    let inputValue = e.target.value;
-    setPostText(inputValue);
+    setFormState({
+      ...formState,
+      [name]: value,
+    })
   };
 
   return (
@@ -86,14 +84,16 @@ const NewPost = () => {
               <ModalCloseButton />
               <ModalBody>
                 <Input
+                  name='postTitle'
                   fontSize="sm"
                   placeholder="Title"
-                  value={postTitle}
-                  onChange={handleTitleChange}
+                  value={formState.postTitle}
+                  onChange={handleChange}
                 />
                 <Textarea
-                  value={postText}
-                  onChange={handleTextChange}
+                  name='postText'
+                  value={formState.postText}
+                  onChange={handleChange}
                   placeholder="Text... "
                   fontSize="sm"
                   size="sm"
