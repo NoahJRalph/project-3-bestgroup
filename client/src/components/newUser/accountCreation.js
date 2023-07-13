@@ -17,7 +17,7 @@ import { EmailIcon, LockIcon } from '@chakra-ui/icons';
 import { FaUserAlt } from 'react-icons/fa';
 import { useMutation } from '@apollo/client'
 import { ADD_NEW_USER } from '../../utils/mutations'
-import Auth from '../utils/auth';
+import Auth from '../../utils/auth';
 
 
 
@@ -36,7 +36,6 @@ function CreateUserModal() {
 	
 	  const handleChange = (event) => {
 		const { name, value } = event.target;
-	
 		setFormState({
 		  ...formState,
 		  [name]: value,
@@ -100,7 +99,7 @@ function CreateUserModal() {
 					</ModalBody>
 
 					<ModalFooter>
-						<Button colorScheme='blue' mr={3} onClick={onClose}>
+						<Button colorScheme='blue' mr={3} onClick={handleFormSubmit}>
 							Create
 						</Button>
 						<Button variant='ghost' onClick={onClose}>Close</Button>
