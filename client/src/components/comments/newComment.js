@@ -19,7 +19,7 @@ import { useMutation } from '@apollo/client';
 import { ADD_COMMENT } from '../../utils/mutations';
 import { QUERY_SINGLE_POST } from '../../utils/queries';
 import { BiChat } from 'react-icons/bi';
-
+import Auth from '../../utils/auth';
 import { useNavigate } from 'react-router-dom';
 
 const NewComment = ({ postId }) => {
@@ -31,27 +31,56 @@ const NewComment = ({ postId }) => {
 		commentText: '',
 	});
 	const [addComment, { error }] = useMutation(ADD_COMMENT, {
-		refetchQueries: [{ query: QUERY_SINGLE_POST, variables: { postId } }],
+		update(cache, { data: { addComment } }) {
+			const data = cache.readQuery({ query: QUERY_SINGLE_POST, variables: { postId } });
+
+			// make sure to add checks for data and data.post 
+			// to avoid errors when these are not available
+			if (data && data.post) {
+				// get the existing comments from the post
+				let comments = data.post.comments;
+
+				// append the new comment to them
+				let newComments = [...comments, addComment.comments[0]];
+
+				// write the new comments to the cache
+				cache.writeQuery({
+					query: QUERY_SINGLE_POST,
+					variables: { postId },
+					data: {
+						...data,
+						post: {
+							...data.post,
+							comments: newComments,
+						},
+					},
+				});
+			}
+		}
+
 	});
+
 
 	const handleFormSubmit = async (event) => {
 		event.preventDefault();
 
 		try {
-			await addComment({
+			const { data } = await addComment({
 				variables: {
 					...formState,
-					postId
+					postId,
+					postAuthor: Auth.getProfile().data.username,
 				},
 			});
 
 			setFormState({
 				commentText: '',
 			});
-			onClose();
-			navigate('/singlePost');
+			navigate(`/singlePost/${postId}`);
 		} catch (err) {
 			console.error(err);
+		} finally {
+			onClose();
 		}
 	};
 

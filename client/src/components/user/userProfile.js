@@ -1,8 +1,9 @@
 import { useQuery } from '@apollo/client';
-import { Box, Text, Heading, Avatar, Button, Stack } from '@chakra-ui/react';
-import { Link } from 'react-router-dom';
+import { Box, Text, Heading, Avatar, } from '@chakra-ui/react';
+
 import { QUERY_ME } from '../../utils/queries';
-import Auth from '../../utils/auth';
+
+import NavBar from '../layouts/navbar';
 
 const UserProfile = () => {
 	// Fetch the user's profile data from the server
@@ -47,9 +48,7 @@ const UserProfile = () => {
 				</ul>
 			</Box>
 
-			<Button as={Link} to="/" colorScheme="teal" variant="outline">
-				Back to Homepage
-			</Button>
+			<NavBar />
 		</Box>
 	);
 };
