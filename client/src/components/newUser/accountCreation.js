@@ -17,6 +17,7 @@ import { EmailIcon, LockIcon } from '@chakra-ui/icons';
 import { FaUserAlt } from 'react-icons/fa';
 import { useMutation } from '@apollo/client'
 import { ADD_NEW_USER } from '../../utils/mutations'
+import Auth from '../utils/auth';
 
 
 
@@ -25,48 +26,38 @@ import { ADD_NEW_USER } from '../../utils/mutations'
 
 function CreateUserModal() {
 	const { isOpen, onOpen, onClose } = useDisclosure()
+	const [formState, setFormState] = useState({
+		username: '',
+		email: '',
+		password: '',
+	  });
+	  const [addUser, { error, data }] = useMutation(ADD_NEW_USER);
+
 	
-		    let [username, setUsername] = useState('');
-		    let [email, setEmail] = useState('');
-		    let [password, setPassword] = useState('');
-		    const [addUser, { error, data }] = useMutation(ADD_NEW_USER);
+	  const handleChange = (event) => {
+		const { name, value } = event.target;
 	
-		    const handleFormSubmit = async (event) => {
-		      event.preventDefault();
-		  
-		      try {
-		        const { data } = await addUser({
-		          variables: {
-		            username,
-		            email,
-		            password,
-		          },
-		        });
-		        setUsername('');
-		        setEmail('');
-		        setPassword('');
-		      } catch (err){
-		        console.log(err);
-		      }
-		    };
-		  
-		    const handleUsernameChange = (e) => {
-		      let inputValue = e.target.value;
-		      setUsername(inputValue);
-			  console.log('Username', inputValue);
-		    };
-		  
-		    const handleEmailChange = (e) => {
-		      let inputValue = e.target.value;
-		      setEmail(inputValue);
-			  console.log('Email', inputValue);
-		    };
-		  
-		    const handlePasswordChange = (e) => {
-		      let inputValue = e.target.value;
-		      setPassword(inputValue);
-			  console.log('Password', inputValue);
-			};
+		setFormState({
+		  ...formState,
+		  [name]: value,
+		});
+	  };
+	
+	  const handleFormSubmit = async (event) => {
+		event.preventDefault();
+		console.log(formState);
+	
+		try {
+		  const { data } = await addUser({
+			variables: { ...formState },
+		  });
+	
+		  Auth.login(data.addUser.token);
+		} catch (e) {
+		  console.error(e);
+		}
+	  };
+	
 			
 	
 			
@@ -88,21 +79,21 @@ function CreateUserModal() {
   					        <InputLeftElement pointerEvents='none'>
   					          <FaUserAlt color='gray.300' size={16} />
   					        </InputLeftElement>
-  					        <Input type='text' placeholder='Username' onChange={(e) => setUsername(e.target.value)}/>
+  					        <Input type='text' placeholder='Username' onChange={handleChange} />
   					      </InputGroup>
 
   					      <InputGroup>
   					        <InputLeftElement pointerEvents='none'>
   					          <EmailIcon color='black' />
   					        </InputLeftElement>
-  					        <Input type='email' placeholder='Email' onChange={(e) => setEmail(e.target.value)}/>
+  					        <Input type='email' placeholder='Email' onChange={handleChange}/>
   					      </InputGroup>
 
   					      <InputGroup>
   					        <InputLeftElement pointerEvents='none'>
   					          <LockIcon color='black' />
   					        </InputLeftElement>
-  					        <Input type='password' placeholder='Password' onChange={(e) => setPassword(e.target.value)} />
+  					        <Input type='password' placeholder='Password' onChange={handleChange} />
   					      </InputGroup>
   					    </Stack>
    					 </form>
