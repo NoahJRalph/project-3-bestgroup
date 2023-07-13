@@ -49,7 +49,7 @@ const NewComment = ({ postId }) => {
 				commentText: '',
 			});
 			onClose();
-			navigate('/singlePost');
+			// navigate('/singlePost');
 		} catch (err) {
 			console.error(err);
 		}

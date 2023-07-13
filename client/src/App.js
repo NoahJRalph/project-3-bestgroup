@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { ChakraProvider, Container, Box } from '@chakra-ui/react';
 import Homepage from './pages/homepage';
 import Dashboard from './pages/Dashboard';
-import SinglePost from './pages/singlePost';
+// import SinglePost from './pages/singlePost';
 import NavBar from './components/layouts/navbar';
 import theme from './theme';
 import './fonts.css';
@@ -75,7 +75,7 @@ function App() {
               <Routes>
                 <Route path="/" element={<Homepage />} />
                 <Route path="/dashboard" element={<Dashboard />} />
-                <Route path="/singlePost" element={<SinglePost />} />
+                {/* <Route path="/singlePost" element={<SinglePost />} /> */}
               </Routes>
             </Container>
           </Box>
