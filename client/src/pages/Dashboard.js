@@ -10,10 +10,10 @@ function Dashboard() {
       <Box>
         <PageHeader />
         <Box mt={16} mb={16}>
-           <Flex justify="center">
+          {/* <Flex justify="center">
             <CardGrid />
-          </Flex> 
-           {/* <UserProfile /> */}
+          </Flex>  */}
+          <UserProfile />
         </Box>
       </Box>
     </Container>

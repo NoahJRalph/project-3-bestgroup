@@ -8,9 +8,9 @@ import {
 	ModalBody,
 	ModalCloseButton,
 	Button,
-	useDisclosure, Input, 
-	Stack, 
-	InputGroup, 
+	useDisclosure, Input,
+	Stack,
+	InputGroup,
 	InputLeftElement
 } from '@chakra-ui/react';
 import { EmailIcon, LockIcon } from '@chakra-ui/icons';
@@ -30,36 +30,36 @@ function CreateUserModal() {
 		username: '',
 		email: '',
 		password: '',
-	  });
-	  const [addUser, { error, data }] = useMutation(ADD_NEW_USER);
+	});
+	const [addUser, { error, data }] = useMutation(ADD_NEW_USER);
 
-	
-	  const handleChange = (event) => {
+
+	const handleChange = (event) => {
 		const { name, value } = event.target;
 		setFormState({
-		  ...formState,
-		  [name]: value,
+			...formState,
+			[name]: value,
 		});
-	  };
-	
-	  const handleFormSubmit = async (event) => {
+	};
+
+	const handleFormSubmit = async (event) => {
 		event.preventDefault();
 		console.log(formState);
-	
+
 		try {
-		  const { data } = await addUser({
-			variables: { ...formState },
-		  });
-	
-		  Auth.login(data.addUser.token);
+			const { data } = await addUser({
+				variables: { ...formState },
+			});
+
+			Auth.login(data.addUser.token);
 		} catch (e) {
-		  console.error(e);
+			console.error(e);
 		}
-	  };
-	
-			
-	
-			
+	};
+
+
+
+
 
 
 	return (
@@ -72,30 +72,30 @@ function CreateUserModal() {
 					<ModalHeader>Account Creation</ModalHeader>
 					<ModalCloseButton />
 					<ModalBody>
-					<form onSubmit={handleFormSubmit}>
-     					 <Stack spacing={4}>
-       					 <InputGroup>
-  					        <InputLeftElement pointerEvents='none'>
-  					          <FaUserAlt color='gray.300' size={16} />
-  					        </InputLeftElement>
-  					        <Input type='text' placeholder='Username' name='username' onChange={handleChange} />
-  					      </InputGroup>
+						<form onSubmit={handleFormSubmit}>
+							<Stack spacing={4}>
+								<InputGroup>
+									<InputLeftElement pointerEvents='none'>
+										<FaUserAlt color='gray.300' size={16} />
+									</InputLeftElement>
+									<Input type='text' placeholder='Username' name='username' onChange={handleChange} />
+								</InputGroup>
 
-  					      <InputGroup>
-  					        <InputLeftElement pointerEvents='none'>
-  					          <EmailIcon color='black' />
-  					        </InputLeftElement>
-  					        <Input type='email' placeholder='Email' name='email' onChange={handleChange}/>
-  					      </InputGroup>
+								<InputGroup>
+									<InputLeftElement pointerEvents='none'>
+										<EmailIcon color='black' />
+									</InputLeftElement>
+									<Input type='email' placeholder='Email' name='email' onChange={handleChange} />
+								</InputGroup>
 
-  					      <InputGroup>
-  					        <InputLeftElement pointerEvents='none'>
-  					          <LockIcon color='black' />
-  					        </InputLeftElement>
-  					        <Input type='password' placeholder='Password' name='password' onChange={handleChange} />
-  					      </InputGroup>
-  					    </Stack>
-   					 </form>
+								<InputGroup>
+									<InputLeftElement pointerEvents='none'>
+										<LockIcon color='black' />
+									</InputLeftElement>
+									<Input type='password' placeholder='Password' name='password' onChange={handleChange} />
+								</InputGroup>
+							</Stack>
+						</form>
 					</ModalBody>
 
 					<ModalFooter>

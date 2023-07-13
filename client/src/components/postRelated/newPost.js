@@ -8,7 +8,6 @@ import {
   ModalCloseButton,
   ModalBody,
   ModalFooter,
-  Text,
   useDisclosure,
   Textarea,
   useBreakpointValue,
@@ -16,37 +15,40 @@ import {
   Input,
   Link,
 } from '@chakra-ui/react';
-import { useMutation, useQuery } from '@apollo/client';
+import { useMutation } from '@apollo/client';
 import { ADD_POST } from '../../utils/mutations';
-import { QUERY_ME } from '../../utils/queries'
 import { RiAddLine } from 'react-icons/ri';
+
+import Auth from '../../utils/auth';
 
 const NewPost = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const [postTitle, setPostTitle] = useState('');
-  const [postText, setPostText] = useState('');
-  const [characterCount, setCharacterCount] = useState(0);
-  const [addPost, { error }] = useMutation(ADD_POST);
   const isMobile = useBreakpointValue({ base: true, md: false });
 
-  const { loading, data } = useQuery(QUERY_ME);
-  const currentUser = data?.me;
+  const [postTitle, setPostTitle] = useState('');
+  const [postText, setPostText] = useState('');
+
+  const [addPost, { error }] = useMutation(ADD_POST);
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-
+    console.log('things happen')
     try {
+      const fish = Auth.getProfile().data.username
+      console.log({ postText, postTitle, fish })
       const { data } = await addPost({
         variables: {
           postTitle,
           postText,
-          postAuthor: currentUser._id,
+          postAuthor: Auth.getProfile().data.username,
         },
-      });
 
+      });
+      console.log('hey ')
       setPostTitle('');
       setPostText('');
-      onClose(); // Close the modal after successful post creation
+      onClose();
+      // Close the modal after successful post creation
     } catch (err) {
       console.error(err);
     }
@@ -59,15 +61,12 @@ const NewPost = () => {
 
   const handleTextChange = (e) => {
     let inputValue = e.target.value;
-    if (inputValue.length <= 280) {
-      setPostText(inputValue);
-      setCharacterCount(inputValue.length);
-    }
+    setPostText(inputValue);
   };
 
   return (
     <Box>
-      {currentUser ? (
+      {Auth.loggedIn() ? (
         <>
           <Button
             onClick={onOpen}
@@ -101,9 +100,6 @@ const NewPost = () => {
                   resize="none"
                   borderRadius="md"
                 />
-                <Text mb="4px" fontSize="xs">
-                  Character Count: {characterCount}/280
-                </Text>
               </ModalBody>
 
               <ModalFooter>
