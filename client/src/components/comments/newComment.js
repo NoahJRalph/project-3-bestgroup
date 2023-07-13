@@ -12,14 +12,15 @@ import {
 	Textarea,
 	useBreakpointValue,
 	Box,
-	Center
+	Center,
+	Flex
 } from '@chakra-ui/react';
 import { useMutation } from '@apollo/client';
 import { ADD_COMMENT } from '../../utils/mutations';
 import { QUERY_SINGLE_POST } from '../../utils/queries';
-import { RiAddLine } from 'react-icons/ri';
+import { BiChat } from 'react-icons/bi';
 
-import { useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom';
 
 const NewComment = ({ postId }) => {
 	const { isOpen, onOpen, onClose } = useDisclosure();
@@ -32,7 +33,6 @@ const NewComment = ({ postId }) => {
 	const [addComment, { error }] = useMutation(ADD_COMMENT, {
 		refetchQueries: [{ query: QUERY_SINGLE_POST, variables: { postId } }],
 	});
-
 
 	const handleFormSubmit = async (event) => {
 		event.preventDefault();
@@ -61,7 +61,7 @@ const NewComment = ({ postId }) => {
 		setFormState({
 			...formState,
 			[name]: value,
-		})
+		});
 	};
 
 	return (
@@ -70,18 +70,16 @@ const NewComment = ({ postId }) => {
 				onClick={onOpen}
 				variant="ghost"
 				color="black"
-				leftIcon={
-					isMobile ? (
-						<Center boxSize={6} >
-							<RiAddLine />
-						</Center>
-					) : null
-				}
-				justifyContent={isMobile ? 'center' : 'flex-start'}
-				textAlign={isMobile ? 'center' : 'left'}
-				width={isMobile ? '100%' : undefined}
+				justifyContent="center"
+				textAlign="center"
+				width="100%"
 			>
-				{isMobile ? null : 'Add Comment'}
+				<Flex justifyContent="center" alignItems="center">
+					<Center boxSize={isMobile ? 6 : undefined}>
+						<BiChat />
+					</Center>
+					{!isMobile && <span style={{ marginLeft: '0.5rem' }}>Comment</span>}
+				</Flex>
 			</Button>
 			<Modal isOpen={isOpen} onClose={onClose}>
 				<ModalOverlay />
@@ -90,7 +88,7 @@ const NewComment = ({ postId }) => {
 					<ModalCloseButton />
 					<ModalBody>
 						<Textarea
-							name='commentText'
+							name="commentText"
 							value={formState.commentText}
 							onChange={handleChange}
 							placeholder="Enter your comment..."
