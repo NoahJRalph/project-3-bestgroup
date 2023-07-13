@@ -67,7 +67,7 @@ function PageHeader() {
       </Box>
       <Spacer />
       <Flex align="center" position="relative">
-        <Box position="absolute" right="0">
+        <Box position="absolute" right="0" pr={2}>
           {isLargerThanMobile ? (
             <Popover placement="bottom-end">
               <PopoverTrigger>

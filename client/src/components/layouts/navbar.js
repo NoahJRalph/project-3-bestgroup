@@ -89,7 +89,7 @@ function NavBar() {
         <Box
           bgGradient="linear-gradient(to bottom, white, gray.400)"
           mx={2}
-          p={1}
+          p={isMobile ? 1 : 3}
           borderRadius="xl"
           border="3px solid black"
           width={isMobile ? '25%' : 'auto'}
@@ -102,7 +102,7 @@ function NavBar() {
         <Box
           bgGradient="linear-gradient(to bottom, white, gray.400)"
           mx={2}
-          p={1}
+          p={isMobile ? 2 : 1}
           borderRadius="xl"
           border="3px solid black"
           width={isMobile ? '25%' : 'auto'}
@@ -118,13 +118,6 @@ function NavBar() {
 }
 
 export default NavBar;
-
-
-
-
-
-
-
 
 
 
