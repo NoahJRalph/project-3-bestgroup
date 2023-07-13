@@ -86,23 +86,23 @@ function NavBar() {
           )}
         </Box>
         {!isMobile && <Spacer />}
-    <Box
-      bgGradient="linear-gradient(to bottom, white, gray.400)"
-      mx={3}
-      p={1}
-      borderRadius="xl"
-      border="3px solid black"
-      width="25%"
-      display="flex"
-      alignItems="center"
-      justifyContent="center"
-    >
+        <Box
+          bgGradient="linear-gradient(to bottom, white, gray.400)"
+          mx={2}
+          p={isMobile ? 1 : 3}
+          borderRadius="xl"
+          border="3px solid black"
+          width={isMobile ? '25%' : 'auto'}
+          display="flex"
+          alignItems="center"
+          justifyContent="center"
+        >
           <NewPost />
         </Box>
         <Box
           bgGradient="linear-gradient(to bottom, white, gray.400)"
           mx={2}
-          p={2}
+          p={isMobile ? 2 : 1}
           borderRadius="xl"
           border="3px solid black"
           width={isMobile ? '25%' : 'auto'}
@@ -118,13 +118,6 @@ function NavBar() {
 }
 
 export default NavBar;
-
-
-
-
-
-
-
 
 
 

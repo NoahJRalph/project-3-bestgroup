@@ -71,7 +71,8 @@ function PageHeader() {
       <Spacer />
       {Auth.loggedIn() ? (
       <Flex align="center" position="relative">
-        <Box position="absolute" right="0" pr="1rem">
+        <Box position="absolute" right="0" pr={2}>
+
           {isLargerThanMobile ? (
             <Popover placement="bottom-end">
               <PopoverTrigger>

@@ -7,20 +7,20 @@ import LoginModal from '../components/loginOut/login';
 
 function Homepage() {
   return (
-    <Container maxW="87%">
+    <Container maxW="90%">
       <Box position="relative" minHeight="80vh">
         <Center bg="black" py={2} boxShadow="0 0 7px 3px white" borderRadius="xl">
           <VStack spacing={4} color="white" textAlign="center">
-            <Heading fontSize="4xl" >Brainsync</Heading>
+            <Heading fontSize="4xl">Brainsync</Heading>
             <Image
-              boxSize="80px"
+              boxSize="100px"
               objectFit="cover"
               maxW={{ base: '100%', sm: '200px' }}
               src={Brain}
               alt="rendering of a human brain"
               borderRadius="lg"
             />
-            <Text fontSize="1xl">Meld your mind with others</Text>
+            <Text fontSize="2xl" >Meld your mind with others</Text>
           </VStack>
         </Center>
         {/*<Center>
