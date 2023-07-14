@@ -35,7 +35,6 @@ const PostCard = () => {
   if (error) return <h3>Error! {error.message}</h3>;
 
   const posts = data.posts;
-  console.log({ posts })
   if (!posts.length) {
     return <h3>Be the first to post</h3>;
   }
