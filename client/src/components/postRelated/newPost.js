@@ -18,7 +18,7 @@ import {
 } from '@chakra-ui/react';
 import { useMutation } from '@apollo/client';
 import { ADD_POST } from '../../utils/mutations';
-import { QUERY_POSTS } from '../../utils/queries';
+import { QUERY_POSTS, QUERY_ME } from '../../utils/queries';
 import { RiAddLine } from 'react-icons/ri';
 
 import Auth from '../../utils/auth';
@@ -39,6 +39,17 @@ const NewPost = () => {
         data: {
           ...data,
           posts: [addPost, ...data.posts],
+        },
+      });
+      const dataMe = cache.readQuery({ query: QUERY_ME });
+      cache.writeQuery({
+        query: QUERY_ME,
+        data: {
+          ...dataMe,
+          me: {
+            ...dataMe.me,
+            posts: [addPost, ...dataMe.me.posts]
+          },
         },
       });
     },
