@@ -74,7 +74,7 @@ const LoginModal = () => {
               <p>you are logged in and should of bee redirected</p>
             ) : (
 
-              <form onSubmit={handleFormSubmit}>
+              <form onSubmit={(e) => handleFormSubmit}>
                 <Stack spacing={4}>
                   <InputGroup>
                     <InputLeftElement pointerEvents='none'>
