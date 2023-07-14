@@ -29,6 +29,8 @@ const PostCard = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { loading, error, data } = useQuery(QUERY_POSTS);
 
+  const [showPopup, setShowPopup] = useState(false);
+
   if (loading) return <h3>Loading posts...</h3>;
   if (error) return <h3>Error! {error.message}</h3>;
 
@@ -37,6 +39,14 @@ const PostCard = () => {
   if (!posts.length) {
     return <h3>Be the first to post</h3>;
   }
+
+  const handleShareClick = () => {
+    navigator.clipboard.writeText(window.location.href);
+    setShowPopup(true);
+    setTimeout(() => {
+      setShowPopup(false);
+    }, 2000);
+  };
 
   return (
     posts.map(post => (
@@ -99,7 +109,7 @@ const PostCard = () => {
               {isMobile ? (
                 <Flex justifyContent="space-evenly" alignItems="center" px={4}>
                   <IconButton isOpen={isOpen} variant="ghost" aria-label="Comment" icon={<BiChat />} w="40%" />
-                  <IconButton variant="ghost" aria-label="Share" icon={<BiShare />} w="40%" />
+                  <IconButton variant="ghost" aria-label="Share" icon={<BiShare />} w="40%" onClick={handleShareClick} />
                 </Flex>
               ) : (
                 <Flex justifyContent="center" alignItems="center">
@@ -107,7 +117,7 @@ const PostCard = () => {
                     <NewComment postId={post._id} />
                   </Box>
                   <Box flex="1" ml={2}>
-                    <Button variant="ghost" leftIcon={<BiShare />} w="100%">
+                    <Button variant="ghost" leftIcon={<BiShare />} w="100%" onClick={handleShareClick}>
                       {isMobile ? null : 'Share'}
                     </Button>
                   </Box>
@@ -116,6 +126,20 @@ const PostCard = () => {
             </Box>
           </CardFooter>
         </Card>
+        {showPopup && (
+          <Box
+            position="fixed"
+            bottom="20px"
+            right="20px"
+            p={2}
+            bg="gray.800"
+            color="white"
+            borderRadius="md"
+            zIndex="9999"
+          >
+            Copied to clipboard!
+          </Box>
+        )}
       </Box>
     ))
   )
