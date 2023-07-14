@@ -41,7 +41,7 @@ const NewPost = () => {
           posts: [addPost, ...data.posts],
         },
       });
-      const dataMe = cache.readQuery({ query: QUERY_ME });
+      /*const dataMe = cache.readQuery({ query: QUERY_ME });
       cache.writeQuery({
         query: QUERY_ME,
         data: {
@@ -51,7 +51,7 @@ const NewPost = () => {
             posts: [addPost, ...dataMe.me.posts]
           },
         },
-      });
+      });*/
     },
   });
 
@@ -65,7 +65,6 @@ const NewPost = () => {
         },
 
       });
-      console.log('hey ')
       setFormState({
         postText: '',
         postTitle: ''
