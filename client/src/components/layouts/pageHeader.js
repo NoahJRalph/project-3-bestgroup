@@ -63,52 +63,52 @@ function PageHeader() {
           </Heading>
           {Auth.loggedIn() ? (
             <Text ml={2} color="gray.500" fontSize={{ base: 'sm', sm: 'md' }}>
-            {Auth.getProfile().data.username}
-          </Text>
-          ):('')}
+              {Auth.getProfile().data.username}
+            </Text>
+          ) : ('')}
         </Flex>
       </Box>
       <Spacer />
       {Auth.loggedIn() ? (
-      <Flex align="center" position="relative">
-        <Box position="absolute" right="0" pr={2}>
+        <Flex align="center" position="relative">
+          <Box position="absolute" right="0" pr={2}>
 
-          {isLargerThanMobile ? (
-            <Popover placement="bottom-end">
-              <PopoverTrigger>
+            {isLargerThanMobile ? (
+              <Popover placement="bottom-end">
+                <PopoverTrigger>
 
-                <Box pr={2}> {/* Add padding-right */}
+                  <Box pr={2}> {/* Add padding-right */}
+                    <Avatar name={Auth.getProfile().data.username} src={Auth.getProfile().data.avatar} size="md" cursor="pointer" />
+                  </Box>
+                </PopoverTrigger>
+                <PopoverContent>
+                  <PopoverArrow />
+                  <PopoverCloseButton />
+                  <PopoverBody>
+                    <button className='logout-button' onClick={logout}>
+                      Logout
+                    </button>
+                  </PopoverBody>
+                </PopoverContent>
+              </Popover>
+            ) : (
+              <Popover placement="bottom-end">
+                <PopoverTrigger>
                   <Avatar name={Auth.getProfile().data.username} src={Auth.getProfile().data.avatar} size="md" cursor="pointer" />
-                </Box>
-              </PopoverTrigger>
-              <PopoverContent>
-                <PopoverArrow />
-                <PopoverCloseButton />
-                <PopoverBody>
-                <button className='logout-button' onClick={logout}>
-                  Logout
-                </button>
-                </PopoverBody>
-              </PopoverContent>
-            </Popover>
-          ) : (
-            <Popover placement="bottom-end">
-              <PopoverTrigger>
-                <Avatar name={Auth.getProfile().data.username} src={Auth.getProfile().data.avatar} size="md" cursor="pointer" />
-              </PopoverTrigger>
-              <PopoverContent>
-                <PopoverArrow />
-                <PopoverCloseButton />
-                <PopoverBody>
-                <button className='logout-button' onClick={logout}>
-                  Logout
-                </button>
-                </PopoverBody>
-              </PopoverContent>
-            </Popover>
-          )}
-        </Box>
-      </Flex>):('')}
+                </PopoverTrigger>
+                <PopoverContent>
+                  <PopoverArrow />
+                  <PopoverCloseButton />
+                  <PopoverBody>
+                    <button className='logout-button' onClick={logout}>
+                      Logout
+                    </button>
+                  </PopoverBody>
+                </PopoverContent>
+              </Popover>
+            )}
+          </Box>
+        </Flex>) : ('')}
     </Flex>
   );
 }

@@ -1,13 +1,18 @@
 import { useQuery } from '@apollo/client';
-import { Box, Text, Heading, Avatar, } from '@chakra-ui/react';
+import { Box, Text, Heading, Avatar, Button } from '@chakra-ui/react';
 
 import { QUERY_ME } from '../../utils/queries';
+import { useMutation } from '@apollo/client';
+import { REMOVE_POST } from '../../utils/mutations';
 
 import NavBar from '../layouts/navbar';
 
 const UserProfile = () => {
 	// Fetch the user's profile data from the server
 	const { loading, data } = useQuery(QUERY_ME);
+	const [removePost] = useMutation(REMOVE_POST, {
+		refetchQueries: [QUERY_ME],
+	});
 
 	if (loading) {
 		return <Text>Loading...</Text>;
@@ -21,6 +26,13 @@ const UserProfile = () => {
 	// Extract user data from the response
 	const { me } = data;
 
+	const handleDeletePost = async postId => {
+		try {
+			await removePost({ variables: { postId } });
+		} catch (err) {
+			console.error(err);
+		}
+	}
 
 	return (
 		<Box p={4}>
@@ -43,6 +55,7 @@ const UserProfile = () => {
 							<Text>{post.postText}</Text>
 							<Text>Author: {post.postAuthor}</Text>
 							<Text>Created At: {post.createdAt}</Text>
+							<Button onClick={() => handleDeletePost(post._id)}>Delete Post</Button>
 						</li>
 					))}
 				</ul>
