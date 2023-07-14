@@ -13,8 +13,8 @@ import './fonts.css';
 import Brain2 from './assets/brain2.png';
 
 const httpLink = createHttpLink({
-  //uri: 'https://bestgroup-brainsync-52f09c273629.herokuapp.com/graphql',
-  uri: 'http://localhost:3001/graphql',
+  uri: 'https://bestgroup-brainsync-52f09c273629.herokuapp.com/graphql',
+  // uri: 'http://localhost:3001/graphql',
 });
 
 const authLink = setContext((_, { headers }) => {
@@ -75,6 +75,7 @@ function App() {
 
               <Routes>
                 <Route path="/" element={<Homepage />} />
+                <Route path="/homepage" element={<Homepage />} />
                 <Route path="/dashboard" element={<Dashboard />} />
                 <Route path="/singlePost/:postId" element={<SinglePost />} />
                 <Route path="/userProfile/:username" element={<UserProfile />} />
